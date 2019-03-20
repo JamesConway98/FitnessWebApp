@@ -1,0 +1,20 @@
+section.popup {
+    display: none;
+    width:100vw;
+    height:100vh;
+    background: rgba(105,100,100,0.8); /* or rgba(255, 255, 255, 0.5);*/
+    position: absolute;
+    top:0px;
+    left:0px;
+    margin-left:0px;
+}
+
+.popupbackgroud{
+    padding: 5vmin;
+    position: absolute;
+    top: 10vmin;
+    left: 50vw;
+    margin-left: -35vmin; /*half-width + padding*/
+    background: lightgray;
+    width: 60vmin;
+}
