@@ -1,7 +1,7 @@
 "use strict";
 function Controller() {
-    var model = new Model(),
-        view = new View();
+    var model = new Model();
+    var view = new View();
 
 
     this.init = function () {

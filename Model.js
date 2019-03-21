@@ -5,4 +5,5 @@ function Model() {
     this.map = function () {
 
     };
+
 }

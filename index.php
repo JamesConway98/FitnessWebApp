@@ -11,8 +11,50 @@
 Smart Commute
 </header>
 <body>
-<div id="scoreBoard" style="width: 100%;height:30vh;">
-    <p> place for the score board</p>
+<div id="scoreBoard">
+    <?php
+
+
+    $host = "devweb2018.cis.strath.ac.uk";
+    $user = "cs317madb";
+    $pass = "ri6nai5Oighe";
+    $dbname = "cs317madb";
+    $conn = new mysqli($host, $user, $pass, $dbname);
+
+    if($conn->connect_error){
+        die("Connection failed : ".$conn->connect_error);
+        }
+
+
+        $sql = "SELECT * FROM `players` ORDER BY `score` DESC";
+        $result = $conn->query($sql);
+
+        if(!$result){
+        die("Query failed : ".$conn->error);
+        }
+
+        echo "<table>\n";
+    echo "<th>"."Position"."</th>";
+    echo "<th>"."Name"."</th>";
+    echo "<th>"."Score"."</th>";
+
+
+    if($result->num_rows > 0){
+        $counter = 1;
+    while($row = $result->fetch_assoc()){
+
+    echo "<tr>\n";
+        echo "<td>".$counter."</td>\n";
+        echo "<td>".$row["name"]."</td>\n";
+        echo "<td>".$row["score"]."</td>\n";
+        echo "</tr>\n";
+        $counter = $counter+ 1;
+    }
+    echo "</table>\n";
+    }
+
+    $conn->close();
+    ?>
 </div>
 
 <div id="googleMap" style="width:100%;height:40vh;"></div>
@@ -40,21 +82,14 @@ Smart Commute
         <p>... so on ...</p>
     </div>
 </section>
-<script>
-    function myMap() {
-        var mapProp= {
-            center:new google.maps.LatLng(51.508742,-0.120850),
-            zoom:5,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-</script>
-<script src = "Location.js"></script>
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap"></script>
 <script src ="Model.js"></script>
 <script src ="View.js"></script>
 <script src ="Controller.js"></script>
+<script src = "Location.js"></script>
 
 </body>
 </html>

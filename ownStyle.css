@@ -18,3 +18,46 @@ section.popup {
     background: lightgray;
     width: 60vmin;
 }
+body{
+    height: 100%;
+    text-align: center;
+}
+html{
+    height: 100%;
+}
+
+
+table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    color: white;
+}
+
+table tr{
+    background-color:#000022;
+}
+
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: lightslategray;
+    color: white;
+}
+#scoreBoard{
+    display: inline-block;
+    overflow-y: scroll;
+    width: 50%;
+    height: 17.5%;
+}
+
+th:first-child{
+    width: 13%;
+}
