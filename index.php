@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width, initial-scale-1.0,maximum-scale-1.0, user-scalable-no " />
 <title>Smart Commute</title>
-<link rel="stylesheet" type="text/css" href="normalise.css" />
+<link rel="stylesheet" type="text/css" href="Normalise.css" />
 <link rel="stylesheet" type="text/css" href="ownStyle.css" />
 </head>
 <header>
@@ -84,12 +84,11 @@ Smart Commute
 </section>
 
 
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap"></script>
 <script src ="Model.js"></script>
 <script src ="View.js"></script>
 <script src ="Controller.js"></script>
 <script src = "Location.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap"></script>
 
 </body>
 </html>
