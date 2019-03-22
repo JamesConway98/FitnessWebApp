@@ -5,11 +5,20 @@ function Controller() {
 
 
     this.init = function () {
-        model.map();
+        model.initMap();
         view.setundoPopup();
 
         document.getElementById("tips").onclick = function (){
             view.showPopup();
+        }
+
+        document.getElementById("startRoute").onclick = function () {
+            model.setStartLocation();
+        }
+
+        document.getElementById("stopRoute").onclick = function () {
+            model.setEndLocation();
+            document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres.";
         }
 
 

@@ -34,4 +34,8 @@ function View(){
         });
     };
 
+    this.startRoute = function (){
+        Model.calcDistance(100, 100);
+    };
+
 }
