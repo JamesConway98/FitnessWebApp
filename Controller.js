@@ -22,6 +22,7 @@ function Controller() {
 
         document.getElementById("startRoute").onclick = function () {
             model.setStartLocation();
+            view.showStopButton();
         };
 
         document.getElementById("stopRoute").onclick = function () {
@@ -35,6 +36,7 @@ function Controller() {
                     " It took " + model.totalTime() + " minutes.";
             }
             view.showEndRoutePopup();
+            view.showStartButton();
         };
 
         document.getElementById("confirmEnd").onclick = function () {

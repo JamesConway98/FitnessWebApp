@@ -77,12 +77,14 @@ Smart Commute
             </td>
         </tr>
         <tr>
-            <td style="width: 33%; height: 100%">
+            <td></td> <!--these are to centre start and stop-->
+            <td id = "startTd" style="width: 33%; height: 100%">
                 <button id="startRoute" style="width:100%; height: 100%">START ROUTE</button>
             </td>
-            <td style="width: 33%; height: 100%">
+            <td id = "stopTd" style="width: 33%; height: 100%" hidden>
                 <button id="stopRoute" style="width:100%; height: 100%">STOP ROUTE</button>
             </td>
+            <td></td>
         </tr>
     </table>
     <p>tips and challenges</p>

@@ -82,4 +82,14 @@ function View(){
         endShown=false;
     };
 
+    this.showStartButton = function () {
+        document.getElementById("stopTd").hidden = true;
+        document.getElementById("startTd").hidden= false;
+    };
+
+    this.showStopButton = function () {
+        document.getElementById("startTd").hidden = true;
+        document.getElementById("stopTd").hidden = false;
+    };
+
 }
