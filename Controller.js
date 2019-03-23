@@ -9,8 +9,13 @@ function Controller() {
         view.setundoPopup();
 
         document.getElementById("tips").onclick = function (){
-            view.showPopup();
-        }
+            view.showPopupForTips();
+            model.setImage(Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
+        };
+
+        document.getElementById("challenge").onclick =function (){
+            view.showPopupForChallenges();
+        };
 
 
 

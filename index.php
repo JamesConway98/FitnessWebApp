@@ -76,6 +76,18 @@ Smart Commute
 </div>
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
+        <p id="water" style="display: none;" ><img src="water.jpg" style="width:100%; height: 40%"> </p>
+        <p id="apple" style="display: none;" ><img src="apple.jpg" style="width:100%; height: 40%"> </p>
+        <p id="walk" style="display: none;" ><img src="walk.jpg" style="width:100%; height: 40%"> </p>
+        <p id="greentea" style="display: none;" ><img src="greentea.jpg" style="width:100%; height: 40%"> </p>
+
+        <p>Go for a run</p>
+        <p> Eat more fruit</p>
+        <p>... so on ...</p>
+    </div>
+</section>
+<section id="popup2" class="popup" style="height: 100%; width: 100%; display: none">
+    <div class="popupbackgroud">
         <p>Drink more water</p>
         <p>Go for a run</p>
         <p> Eat more fruit</p>

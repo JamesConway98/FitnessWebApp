@@ -15,7 +15,7 @@ section.popup {
     top: 10vmin;
     left: 50vw;
     margin-left: -35vmin; /*half-width + padding*/
-    background: lightgray;
+    background: ghostwhite;
     width: 60vmin;
 }
 body{

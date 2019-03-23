@@ -1,6 +1,7 @@
 "use strict";
 function View(){
-    var shown =false,
+    var tricksShown =false,
+        challengesShown =false,
         addMouseAndTouchUp = function (elementID, handler) {
             //utility function to add both mouseup and touchend events and prevent double events
             var element = document.getElementById(elementID),
@@ -14,14 +15,26 @@ function View(){
         };
 
 
-    this.showPopup = function () {
-        if(shown){
+    this.showPopupForTips = function () {
+        if(tricksShown){
             document.getElementById("popup1").style.display= "none";
-            shown=false;
+            tricksShown=false;
         }else{
             document.getElementById("popup1").style.display= "block";
             history.pushState(null, null, "#trick");
-            shown = true;
+            tricksShown = true;
+
+        }
+    };
+
+    this.showPopupForChallenges = function () {
+        if(challengesShown){
+            document.getElementById("popup2").style.display= "none";
+            challengesShown=false;
+        }else{
+            document.getElementById("popup2").style.display= "block";
+            history.pushState(null, null, "#trick");
+            challengesShown = true;
 
         }
     };
@@ -29,9 +42,14 @@ function View(){
         addMouseAndTouchUp("popup1", function () {
             window.history.back();
             document.getElementById("popup1").style.display= "none";
-            shown=false;
-
+            tricksShown=false;
         });
+
+        addMouseAndTouchUp("popup2",function () {
+            window.history.back();
+            document.getElementById("popup2").style.display="none";
+            challengesShown=false;
+        })
     };
 
 }
