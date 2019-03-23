@@ -6,6 +6,7 @@ function Controller() {
 
     this.init = function () {
         model.initMap();
+        model.initWeather();
         view.setundoPopup();
         view.setundoEndPopup();
 

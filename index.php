@@ -11,6 +11,11 @@
 Smart Commute
 </header>
 <body>
+<div id = "weather">
+    <p id = "temp"></p>
+    <p id = "wind"></p>
+    <p id = "desc"></p>
+</div>
 <div id="scoreBoard">
     <?php
 
@@ -115,7 +120,7 @@ Smart Commute
     </div>
 </section>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src ="Model.js"></script>
 <script src ="View.js"></script>
 <script src ="Controller.js"></script>

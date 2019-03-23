@@ -61,3 +61,7 @@ table th {
 th:first-child{
     width: 13%;
 }
+
+#weather{
+    text-align: left;
+}
