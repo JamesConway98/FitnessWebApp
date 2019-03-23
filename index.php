@@ -95,7 +95,7 @@ Smart Commute
         <p>... so on ...</p>
     </div>
 </section>
-<section id="popup2" class="popup" style="height: 100%; width: 100%; display: none">
+<section id="popup12" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
         <p>Drink more water</p>
         <p>Go for a run</p>

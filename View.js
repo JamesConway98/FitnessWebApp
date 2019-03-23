@@ -30,10 +30,10 @@ function View(){
 
     this.showPopupForChallenges = function () {
         if(challengesShown){
-            document.getElementById("popup2").style.display= "none";
+            document.getElementById("popup12").style.display= "none";
             challengesShown=false;
         }else{
-            document.getElementById("popup2").style.display= "block";
+            document.getElementById("popup12").style.display= "block";
             history.pushState(null, null, "#trick");
             challengesShown = true;
 
@@ -46,9 +46,9 @@ function View(){
             tricksShown=false;
         });
 
-        addMouseAndTouchUp("popup2",function () {
+        addMouseAndTouchUp("popup12",function () {
             window.history.back();
-            document.getElementById("popup2").style.display="none";
+            document.getElementById("popup12").style.display="none";
             challengesShown=false;
         })
     };

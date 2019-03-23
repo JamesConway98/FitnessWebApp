@@ -6,7 +6,7 @@ function Controller() {
 
     this.init = function () {
         model.initMap();
-        //view.setundoPopup();
+        view.setundoPopup();
         view.setundoEndPopup();
 
         document.getElementById("tips").onclick = function (){
