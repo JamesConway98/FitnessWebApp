@@ -71,8 +71,17 @@ Smart Commute
                 <button id="socialMedia" style="width:100%; height: 100%">SOCIAL MEDIA</button>
             </td>
         </tr>
+        <tr>
+            <td style="width: 33%; height: 100%">
+                <button id="startRoute" style="width:100%; height: 100%">START ROUTE</button>
+            </td>
+            <td style="width: 33%; height: 100%">
+                <button id="stopRoute" style="width:100%; height: 100%">STOP ROUTE</button>
+            </td>
+        </tr>
     </table>
     <p>tips and challenges</p>
+    <p id = "distance"></p>
 </div>
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
@@ -95,12 +104,22 @@ Smart Commute
     </div>
 </section>
 
+<section id="popup2" class="popup" style="height: 100%; width: 100%; display: none">
+    <div class="popupbackgroud">
+        <p>Roughly what percentage of the Journey did you Walk/Cycle/Run?</p>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+            <p>Value: <span id="sliderValue"></span></p>
+        </div>
+        <button id="confirmEnd" style="width:100%; height: 100%">CONFIRM</button>
+    </div>
+</section>
+
 
 <script src ="Model.js"></script>
 <script src ="View.js"></script>
 <script src ="Controller.js"></script>
-<script src = "Location.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap&libraries=geometry"></script>
 
 </body>
 </html>

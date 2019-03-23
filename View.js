@@ -2,6 +2,7 @@
 function View(){
     var tricksShown =false,
         challengesShown =false,
+        endShown=false,
         addMouseAndTouchUp = function (elementID, handler) {
             //utility function to add both mouseup and touchend events and prevent double events
             var element = document.getElementById(elementID),
@@ -50,6 +51,30 @@ function View(){
             document.getElementById("popup2").style.display="none";
             challengesShown=false;
         })
+    };
+
+    this.showEndRoutePopup = function () {
+        if(endShown) {
+            document.getElementById("popup1").style.display = "none";
+            tricksShown = false;
+        }else{
+            document.getElementById("popup2").style.display = "block";
+            history.pushState(null, null, "#trick");
+            endShown = true;
+        }
+
+        //this shows value of slider
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("sliderValue");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    };
+    this.setundoEndPopup =function (){
+        window.history.back();
+        document.getElementById("popup2").style.display= "none";
     };
 
 }
