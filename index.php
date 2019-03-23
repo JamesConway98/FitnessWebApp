@@ -92,6 +92,17 @@ Smart Commute
     </div>
 </section>
 
+<section id="popup2" class="popup" style="height: 100%; width: 100%; display: none">
+    <div class="popupbackgroud">
+        <p>Roughly what percentage of the Journey did you Walk/Cycle/Run?</p>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+            <p>Value: <span id="sliderValue"></span></p>
+        </div>
+        <button id="confirmEnd" style="width:100%; height: 100%">CONFIRM</button>
+    </div>
+</section>
+
 
 <script src ="Model.js"></script>
 <script src ="View.js"></script>

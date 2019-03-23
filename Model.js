@@ -44,6 +44,7 @@ function Model() {
 
     this.setEndLocation = function () {
         endLocation = getLocation();
+
         console.log(getLocation());
     };
 
@@ -52,6 +53,10 @@ function Model() {
         var p2 = new google.maps.LatLng(endLocation.lat, endLocation.lng);
         console.log(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
         return google.maps.geometry.spherical.computeDistanceBetween(p1, p2); //distance in KiloMeters
+    };
+
+    this.calcEndScore = function(){
+        //TODO use percentage ran/walked/cycled with distance travelled to calculate a score
     }
 
 }
