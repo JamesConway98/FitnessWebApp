@@ -26,7 +26,14 @@ function Controller() {
 
         document.getElementById("stopRoute").onclick = function () {
             model.setEndLocation();
-            document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres.";
+            //printing the total time of journey
+            if(model.totalTime() < 2){
+                document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
+                    " It took 1 minute.";
+            }else {
+                document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
+                    " It took " + model.totalTime() + " minutes.";
+            }
             view.showEndRoutePopup();
         };
 

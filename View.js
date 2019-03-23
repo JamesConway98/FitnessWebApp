@@ -73,8 +73,13 @@ function View(){
         }
     };
     this.setundoEndPopup =function (){
-        window.history.back();
+        addMouseAndTouchUp("popup12",function () {
+            window.history.back();
+            document.getElementById("popup2").style.display= "none";
+            endShown=false;
+        });
         document.getElementById("popup2").style.display= "none";
+        endShown=false;
     };
 
 }

@@ -4,6 +4,8 @@ function Model() {
     var map,
         startLocation,
         endLocation,
+        startTime,
+        endTime,
         latitude,
         longitude;
 
@@ -16,7 +18,7 @@ function Model() {
             navigator.geolocation.getCurrentPosition(showPosition);
             return {lat: latitude, lng: longitude};
         } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
+            map.innerHTML = "Geolocation is not supported by this browser.";
         }
     }
 
@@ -39,6 +41,7 @@ function Model() {
 
     this.setStartLocation = function () {
         startLocation = getLocation();
+        startTime = new Date();
         console.log(getLocation());
     };
     this.setImage=function (number){
@@ -46,7 +49,7 @@ function Model() {
             document.getElementById("water").style.display="block";
 
         }else if(number === 1){
-            document.getElementById("aplle").style.display="block";
+            document.getElementById("apple").style.display="block";
         }else if(number ===2){
             document.getElementById("walk").style.display="block";
         }else{
@@ -56,8 +59,15 @@ function Model() {
 
     this.setEndLocation = function () {
         endLocation = getLocation();
-
+        endTime = new Date();
         console.log(getLocation());
+    };
+
+    this.totalTime = function () {
+        //Working out time it took
+        var diff =(endTime.getTime() - startTime.getTime()) / 1000;
+        diff /= 60;
+        return Math.abs(Math.round(diff));
     };
 
     this.calcDistance = function () {//p1 and p2 in the form of google.maps.LatLng object
