@@ -92,4 +92,8 @@ function View(){
         document.getElementById("stopTd").hidden = false;
     };
 
+    this.setNewScore = function(){
+        document.getElementById("totalScore").innerHTML = "Your Total Score - " + localStorage.getItem("totalScore");
+    };
+
 }

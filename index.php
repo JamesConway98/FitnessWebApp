@@ -67,27 +67,28 @@ Smart Commute
     <table id="table" style="width: 100%; height: 100%">
         <tr>
             <td style="width: 33%; height: 100%">
-                <button id="tips" style="width:100%; height:100% "> TIPS</button>
-            </td>
-            <td style="width: 33%; height: 100%">
                 <button id="challenge" style="width:100%; height: 100%">CHALLENGE</button>
             </td >
+            <td id = "startTd" style="width: 33%; height: 100%" rowspan="2">
+                <button id="startRoute" style="width:100%; height: 100%">START ROUTE</button>
+            </td>
+            <td id = "stopTd" style="width: 33%; height: 100%" hidden rowspan="2">
+                <button id="stopRoute" style="width:100%; height: 100%">STOP ROUTE</button>
+            </td>
             <td style="width: 33%; height: 100%">
                 <button id="socialMedia" style="width:100%; height: 100%">SOCIAL MEDIA</button>
             </td>
         </tr>
         <tr>
-            <td></td> <!--these are to centre start and stop-->
-            <td id = "startTd" style="width: 33%; height: 100%">
-                <button id="startRoute" style="width:100%; height: 100%">START ROUTE</button>
+            <td style="width: 33%; height: 100%">
+                <button id="tips" style="width:100%; height:100% ">TIPS</button>
             </td>
-            <td id = "stopTd" style="width: 33%; height: 100%" hidden>
-                <button id="stopRoute" style="width:100%; height: 100%">STOP ROUTE</button>
+            <td style="width: 33%; height: 100%">
+                <button id="weatherButton" style="width:100%; height:100%">WEATHER</button>
             </td>
-            <td></td>
         </tr>
     </table>
-    <p>tips and challenges</p>
+    <p id = "totalScore">Your Total Score -  <?php ?></p> <!--- TODO use database to get score or use local storage -->
     <p id = "distance"></p>
 </div>
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">

@@ -27,20 +27,22 @@ function Controller() {
 
         document.getElementById("stopRoute").onclick = function () {
             model.setEndLocation();
-            //printing the total time of journey
-            if(model.totalTime() < 2){
-                document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
-                    " It took 1 minute.";
-            }else {
-                document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
-                    " It took " + model.totalTime() + " minutes.";
-            }
             view.showEndRoutePopup();
             view.showStartButton();
         };
 
         document.getElementById("confirmEnd").onclick = function () {
+            //printing the total time of journey
+            if(model.totalTime() < 2){
+                document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
+                    " It took 1 minute. This scored " + model.calcEndScore() + " points.";
+            }else {
+                document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
+                    " It took " + model.totalTime() + " minutes. This scored " + model.calcEndScore() + " points.";
+            }
             model.calcEndScore();
+            model.addScoreTotal();
+            view.setNewScore();
             view.setundoEndPopup();
         };
 

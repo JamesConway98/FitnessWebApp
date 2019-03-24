@@ -79,6 +79,10 @@ function Model() {
 
     this.calcEndScore = function(){
         //TODO use percentage ran/walked/cycled with distance travelled to calculate a score
+        return this.calcDistance() * document.getElementById("myRange").value;
+    };
+    this.addScoreTotal = function () {
+        localStorage.setItem("totalScore", localStorage.getItem("totalScore")+this.calcEndScore());
     };
     this.initWeather = function () {
         $(document).ready(function() {
