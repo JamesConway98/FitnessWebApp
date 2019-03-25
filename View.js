@@ -2,6 +2,7 @@
 function View(){
     var tricksShown =false,
         challengesShown =false,
+        openNav = false,
         endShown=false,
         addMouseAndTouchUp = function (elementID, handler) {
             //utility function to add both mouseup and touchend events and prevent double events
@@ -14,6 +15,47 @@ function View(){
             element.addEventListener("mouseup", f, false);
             element.addEventListener("touchend", f, false);
         };
+    this.openCloseNav = function () {
+        //dogle the side menu reveal
+        // window.alert("openCloseNav is working");
+        if (openNav) {
+            openNav = false;
+            document.getElementById("nav").className = "closedmenu";
+            document.getElementById("main").className = "closedmenu";
+            document.getElementById("navelem").style.display = "none";
+        } else {
+            openNav = true;
+            document.getElementById("nav").className = "";
+            document.getElementById("main").className = "";
+            document.getElementById("navelem").style.display = "block";
+        }
+    };
+
+
+    this.setImage=function (number){
+        if(number ===0){
+            document.getElementById("water").style.display="block";
+            document.getElementById("apple").style.display="none";
+            document.getElementById("walk").style.display="none";
+            document.getElementById("greentea").style.display="none";
+
+        }else if(number === 1){
+            document.getElementById("apple").style.display="block";
+            document.getElementById("walk").style.display="none";
+            document.getElementById("greentea").style.display="none";
+            document.getElementById("water").style.display="none";
+        }else if(number ===2){
+            document.getElementById("walk").style.display="block";
+            document.getElementById("greentea").style.display="none";
+            document.getElementById("water").style.display="none";
+            document.getElementById("apple").style.display="none";
+        }else{
+            document.getElementById("greentea").style.display="block";
+            document.getElementById("water").style.display="none";
+            document.getElementById("apple").style.display="none";
+            document.getElementById("walk").style.display="none";
+        }
+    };
 
 
     this.showPopupForTips = function () {

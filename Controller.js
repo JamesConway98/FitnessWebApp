@@ -12,13 +12,17 @@ function Controller() {
 
         document.getElementById("tips").onclick = function (){
             view.showPopupForTips();
-            model.setImage(Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
+            view.setImage(Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
         };
 
 
         document.getElementById("challenge").onclick =function (){
             view.showPopupForChallenges();
         };
+
+        document.getElementById("navmenu").onclick = function (){
+            view.openCloseNav();
+        }
 
         document.getElementById("startRoute").onclick = function () {
             model.setStartLocation();
@@ -47,6 +51,12 @@ function Controller() {
         };
 
     };
+
+    this.showATip = function () {
+        view.showPopupForTips();
+        view.setImage(Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
+    }
 }
 var controller = new Controller();
 window.addEventListener("load", controller.init);
+window.addEventListener("load", controller.showATip);

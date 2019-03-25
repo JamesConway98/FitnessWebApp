@@ -7,10 +7,20 @@
 <link rel="stylesheet" type="text/css" href="Normalise.css" />
 <link rel="stylesheet" type="text/css" href="ownStyle.css" />
 </head>
-<header>
+<body>
+
+<header style="height: 1.5rem; text-align: center; background-color: black; color: white">
 Smart Commute
 </header>
-<body>
+
+<nav id="nav" class="closedmenu">
+    <p id="navmenu"> <img src="hamburger.png" alt="Menu" width="32" height="32"></p>
+    <div id="navelem">
+        <p class="navMenuItem" id="navCurrencyFrom"> Currency</p>
+        <p class="navMenuItem" id="bankFee">Bank fee</p>
+    </div>
+</nav>
+<main id="main" class="closedmenu">
 <div id = "weather">
     <p id = "temp"></p>
     <p id = "wind"></p>
@@ -18,7 +28,6 @@ Smart Commute
 </div>
 <div id="scoreBoard">
     <?php
-
 
     $host = "devweb2018.cis.strath.ac.uk";
     $user = "cs317madb";
@@ -61,7 +70,6 @@ Smart Commute
     $conn->close();
     ?>
 </div>
-
 <div id="googleMap" style="width:100%;height:40vh;"></div>
 <div id="tipnChallenge" style="width: 100%;height: 10vh">
     <table id="table" style="width: 100%; height: 100%">
@@ -122,6 +130,8 @@ Smart Commute
         <button id="confirmEnd" style="width:100%; height: 100%">CONFIRM</button>
     </div>
 </section>
+
+</main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src ="Model.js"></script>

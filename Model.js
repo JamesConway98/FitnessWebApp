@@ -44,18 +44,6 @@ function Model() {
         startTime = new Date();
         console.log(getLocation());
     };
-    this.setImage=function (number){
-        if(number ===0){
-            document.getElementById("water").style.display="block";
-
-        }else if(number === 1){
-            document.getElementById("apple").style.display="block";
-        }else if(number ===2){
-            document.getElementById("walk").style.display="block";
-        }else{
-            document.getElementById("greentea").style.display="block";
-        }
-    };
 
     this.setEndLocation = function () {
         endLocation = getLocation();
