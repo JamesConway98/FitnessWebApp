@@ -14,7 +14,7 @@ Smart Commute
 </header>
 
 <nav id="nav" class="closedmenu">
-    <p id="navmenu"> <img src="hamburger.png" alt="Menu" width="32" height="32"></p>
+    <p id="navmenu"> <img src="res/hamburger.png" alt="Menu" width="32" height="32"></p>
     <div id="navelem">
         <p class="navMenuItem" id="navCurrencyFrom"> Currency</p>
         <p class="navMenuItem" id="bankFee">Bank fee</p>
@@ -101,10 +101,10 @@ Smart Commute
 </div>
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
-        <p id="water" style="display: none;" ><img alt = "Water" src="water.jpg" style="width:100%; height: 40%"> </p>
-        <p id="apple" style="display: none;" ><img alt = "Apple" src="apple.jpg" style="width:100%; height: 40%"> </p>
-        <p id="walk" style="display: none;" ><img alt = "Walk" src = "walk.jpg" style="width:100%; height: 40%"> </p>
-        <p id="greentea" style="display: none;" ><img alt = "Green Tea" src="greentea.jpg" style="width:100%; height: 40%"> </p>
+        <p id="water" style="display: none;" ><img alt = "Water" src="res/water.jpg" style="width:100%; height: 40%"> </p>
+        <p id="apple" style="display: none;" ><img alt = "Apple" src="res/apple.jpg" style="width:100%; height: 40%"> </p>
+        <p id="walk" style="display: none;" ><img alt = "Walk" src = "res/walk.jpg" style="width:100%; height: 40%"> </p>
+        <p id="greentea" style="display: none;" ><img alt = "Green Tea" src="res/greentea.jpg" style="width:100%; height: 40%"> </p>
 
         <p>Go for a run</p>
         <p> Eat more fruit</p>
