@@ -87,14 +87,31 @@ function Model() {
     this.initWeather = function () {
         $(document).ready(function() {
             $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
-                var temp = data.main.temp;
-                document.getElementById('temp').innerHTML = "The current temperature is: " + temp  + "&#8451";
-                var wind = Math.round(data.wind.speed*3.6*10)/10;
-                document.getElementById('wind').innerHTML = "Wind: " + wind + " km/h";
-                var desc = data.weather[0].main;
-                document.getElementById('desc').innerHTML = desc;
 
+                    var temp = data.main.temp;
+                    localStorage.setItem('storeTemp', temp);
+                    document.getElementById('temp').innerHTML = "The current temperature is: " + temp + "&#8451";
+
+                    var wind = Math.round(data.wind.speed * 3.6 * 10) / 10;
+                    localStorage.setItem('storeWind', wind);
+                    document.getElementById('wind').innerHTML = "Wind: " + wind + " km/h";
+
+                    var desc = data.weather[0].main;
+                    localStorage.setItem('storeDesc', desc);
+                    document.getElementById('desc').innerHTML = desc;
+
+            })
+            .fail(function() {
+                var temp = localStorage.getItem('storeTemp');
+                document.getElementById('temp').innerHTML = "The current temperature is: " + temp + "&#8451";
+
+                var wind = localStorage.getItem('storeWind');
+                document.getElementById('wind').innerHTML = "Wind: " + wind + " km/h";
+
+                var desc = localStorage.getItem('storeDesc');
+                document.getElementById('desc').innerHTML = desc;
             });
+
         });
     };
 
