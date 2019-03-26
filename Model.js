@@ -72,6 +72,14 @@ function Model() {
     this.addScoreTotal = function () {
         localStorage.setItem("totalScore", localStorage.getItem("totalScore")+this.calcEndScore());
     };
+
+    this.setLogin = function (username){
+        localStorage.setItem("loggedIn", username);
+    };
+
+    this.logout = function (){
+        localStorage.setItem("loggedIn", "");
+    };
     this.initWeather = function () {
         $(document).ready(function() {
             $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {

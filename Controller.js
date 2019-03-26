@@ -58,7 +58,16 @@ function Controller() {
     };
 
     document.getElementById("submitLogin").onclick = function () {
+        var username = document.getElementById("username").value;
+        if(username != ""){
+            model.setLogin(username);
+            view.showLogoutButton();
+        }
         view.setundoLoginPopup();
+    };
+
+    document.getElementById("logout").onclick = function () {
+        view.showLoginButton();
     };
 
     this.showATip = function () {

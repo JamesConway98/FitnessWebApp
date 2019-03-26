@@ -23,7 +23,7 @@
                         <button id="startRoute" >START ROUTE</button>
 
 
-                        <button id="stopRoute" >STOP ROUTE</button>
+                        <button id="stopRoute" hidden>STOP ROUTE</button>
 
 
                         <button id="socialMedia">SOCIAL MEDIA</button>
@@ -36,6 +36,9 @@
 
 
                         <button id ="login">LOGIN</button>
+
+
+                        <button id ="logout" hidden>LOGOUT</button>
 
         </div>
     </div>
@@ -93,7 +96,7 @@
 </div>
         <div id = "totalScore">
             <p id = "totalScore">Your Total Score -  <?php ?></p> <!--- TODO use database to get score or use local storage -->
-        <p id = "distance"></p>
+        <p id="distance">D</p>
     </div>
     </div>
 <div id="googleMap" style="width:100%;"></div>
@@ -135,7 +138,7 @@
         <class="popupbackgroud">
 
         <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username">
+        <input id ="username" type="text" placeholder="Enter Username" name="username">
 
 
         <label for="pass"><b>Password</b></label>

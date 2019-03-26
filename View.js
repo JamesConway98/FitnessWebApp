@@ -141,13 +141,23 @@ function View(){
     };
 
     this.showStartButton = function () {
-        document.getElementById("stopTd").hidden = true;
-        document.getElementById("startTd").hidden= false;
+        document.getElementById("stopRoute").hidden = true;
+        document.getElementById("startRoute").hidden= false;
     };
 
     this.showStopButton = function () {
-        document.getElementById("startTd").hidden = true;
-        document.getElementById("stopTd").hidden = false;
+        document.getElementById("startRoute").hidden = true;
+        document.getElementById("stopRoute").hidden = false;
+    };
+
+    this.showLoginButton = function (){
+        document.getElementById("logout").hidden = true;
+        document.getElementById("login").hidden = false;
+    };
+
+    this.showLogoutButton = function (){
+        document.getElementById("login").hidden = true;
+        document.getElementById("logout").hidden = false;
     };
 
     this.setNewScore = function(){
