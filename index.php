@@ -9,18 +9,36 @@
 </head>
 <body>
 
-<header style="height: 1.5rem; text-align: center; background-color: black; color: white">
-Smart Commute
-</header>
 
 <nav id="nav" class="closedmenu">
     <p id="navmenu"> <img src="res/hamburger.png" alt="Menu" width="32" height="32"></p>
     <div id="navelem">
-        <p class="navMenuItem" id="navCurrencyFrom"> Currency</p>
-        <p class="navMenuItem" id="bankFee">Bank fee</p>
+        <div id="tipnChallenge">
+
+
+
+                        <button id="challenge" >CHALLENGE</button>
+
+
+                        <button id="startRoute" >START ROUTE</button>
+
+
+                        <button id="stopRoute" >STOP ROUTE</button>
+
+
+                        <button id="socialMedia">SOCIAL MEDIA</button>
+
+
+                        <button id="tips" >TIPS</button>
+
+
+                        <button id="weatherButton" >WEATHER</button>
+
+        </div>
     </div>
 </nav>
 <main id="main" class="closedmenu">
+    <div id = "top">
 <div id = "weather">
     <p id = "temp"></p>
     <p id = "wind"></p>
@@ -70,35 +88,14 @@ Smart Commute
     $conn->close();
     ?>
 </div>
-<div id="googleMap" style="width:100%;height:40vh;"></div>
-<div id="tipnChallenge" style="width: 100%;height: 10vh">
-    <table id="table" style="width: 100%; height: 100%">
-        <tr>
-            <td style="width: 33%; height: 100%">
-                <button id="challenge" style="width:100%; height: 100%">CHALLENGE</button>
-            </td >
-            <td id = "startTd" style="width: 33%; height: 100%" rowspan="2">
-                <button id="startRoute" style="width:100%; height: 100%">START ROUTE</button>
-            </td>
-            <td id = "stopTd" style="width: 33%; height: 100%" hidden rowspan="2">
-                <button id="stopRoute" style="width:100%; height: 100%">STOP ROUTE</button>
-            </td>
-            <td style="width: 33%; height: 100%">
-                <button id="socialMedia" style="width:100%; height: 100%">SOCIAL MEDIA</button>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 33%; height: 100%">
-                <button id="tips" style="width:100%; height:100% ">TIPS</button>
-            </td>
-            <td style="width: 33%; height: 100%">
-                <button id="weatherButton" style="width:100%; height:100%">WEATHER</button>
-            </td>
-        </tr>
-    </table>
-    <p id = "totalScore">Your Total Score -  <?php ?></p> <!--- TODO use database to get score or use local storage -->
-    <p id = "distance"></p>
+        <div id = "totalScore">
+            <p id = "totalScore">Your Total Score -  <?php ?></p> <!--- TODO use database to get score or use local storage -->
+        <p id = "distance"></p>
+    </div>
+    </div>
+<div id="googleMap" style="width:100%;"></div>
 </div>
+
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
         <p id="water" style="display: none;" ><img alt = "Water" src="res/water.jpg" style="width:100%; height: 40%"> </p>

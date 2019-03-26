@@ -1,50 +1,45 @@
-section.popup {
-    display: none;
-    width:100vw;
-    height:100vh;
-    background: rgba(105,100,100,0.8); /* or rgba(255, 255, 255, 0.5);*/
-    position: absolute;
-    top:0px;
-    left:0px;
-    margin-left:0px;
+html{
+    height: 100%;
 }
 
-.popupbackgroud{
-    padding: 5vmin;
-    position: absolute;
-    top: 10vmin;
-    left: 50vw;
-    margin-left: -35vmin; /*half-width + padding*/
-    background: ghostwhite;
-    width: 60vmin;
-}
-main.closedmenu{
-    margin-left: calc(40px + 10px);
-}
 body {
-    max-height: calc(100vh - 1.5rem);
+    height: 100%;
 }
-
-nav {
-    background-color: #eeeeee;
-    padding: 0.3rem;
-    width: 20%;
-    float: left;
-    font-size: 0.8rem;
-    height: calc(100vh - 2.5rem);
-}
-nav.closedmenu{
-    width:40px;
-}
-
 main{
-    height: calc(100vh - 1.5rem);
+    height: 100%;
     margin-left: calc(20% + 10px);
     overflow: auto;
     text-align: center;
 }
-html{
-    height: calc(100% - 1.5rem);
+
+main.closedmenu{
+    margin-left: calc(40px + 10px);
+}
+
+#top{
+    height: 15rem;
+    margin: 1rem;
+
+}
+#weather{
+    text-align: left;
+    float: left;
+    width: 15%;
+}
+
+#scoreBoard{
+    overflow-y: scroll;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+
+}
+#totalScore{
+    float: right;
+}
+
+#googleMap{
+    height: calc(100% - 17rem);
 }
 
 
@@ -72,17 +67,58 @@ table th {
     background-color: lightslategray;
     color: white;
 }
-#scoreBoard{
-    display: inline-block;
-    overflow-y: scroll;
-    width: 50%;
-    height: 17.5%;
-}
 
 th:first-child{
     width: 13%;
 }
 
-#weather{
+nav {
+    background-color: #eeeeee;
+    padding: 0.3rem;
+    width: 20%;
+    float: left;
+    font-size: 0.8rem;
+    height: calc(100% - 0.55rem);
+}
+#navelem{
+    display: none;
+}
+nav.closedmenu{
+    width:40px;
+}
+
+
+button{
+
+    margin: 0.2rem;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    background: midnightblue;
+    font-weight: bold;
     text-align: left;
+    cursor: pointer;
+    color: white;
+    background-size:40px;
+    border: 0px;
+    border-radius: 0.2rem;
+}
+section.popup {
+    display: none;
+    width:100vw;
+    height:100vh;
+    background: rgba(105,100,100,0.8); /* or rgba(255, 255, 255, 0.5);*/
+    position: absolute;
+    top:0px;
+    left:0px;
+    margin-left:0px;
+}
+
+.popupbackgroud{
+    padding: 5vmin;
+    position: absolute;
+    top: 10vmin;
+    left: 50vw;
+    margin-left: -35vmin; /*half-width + padding*/
+    background: ghostwhite;
+    width: 60vmin;
 }
