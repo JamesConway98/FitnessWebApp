@@ -4,6 +4,7 @@ function View(){
         challengesShown =false,
         openNav = false,
         endShown=false,
+        loginShown = false,
         addMouseAndTouchUp = function (elementID, handler) {
             //utility function to add both mouseup and touchend events and prevent double events
             var element = document.getElementById(elementID),
@@ -97,7 +98,7 @@ function View(){
 
     this.showEndRoutePopup = function () {
         if(endShown) {
-            document.getElementById("popup1").style.display = "none";
+            document.getElementById("popup2").style.display = "none";
             tricksShown = false;
         }else{
             document.getElementById("popup2").style.display = "block";
@@ -115,13 +116,28 @@ function View(){
         }
     };
     this.setundoEndPopup =function (){
-        addMouseAndTouchUp("popup12",function () {
-            window.history.back();
-            document.getElementById("popup2").style.display= "none";
-            endShown=false;
-        });
         document.getElementById("popup2").style.display= "none";
         endShown=false;
+    };
+
+    this.showLoginPopup = function () {
+        if(loginShown) {
+            document.getElementById("loginPopup").style.display = "none";
+            tricksShown = false;
+        }else{
+            document.getElementById("loginPopup").style.display = "block";
+            history.pushState(null, null, "#trick");
+            loginShown = true;
+        }
+
+        //this shows value of slider
+        var email = document.getElementById("emailEntry");
+        var password = document.getElementById("passwordEntry");
+
+    };
+    this.setundoLoginPopup =function (){
+        document.getElementById("loginPopup").style.display= "none";
+        loginShown=false;
     };
 
     this.showStartButton = function () {

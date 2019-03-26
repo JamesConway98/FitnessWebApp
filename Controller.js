@@ -9,6 +9,7 @@ function Controller() {
         model.initWeather();
         view.setundoPopup();
         view.setundoEndPopup();
+        view.setundoLoginPopup();
 
         document.getElementById("tips").onclick = function (){
             view.showPopupForTips();
@@ -50,6 +51,14 @@ function Controller() {
             view.setundoEndPopup();
         };
 
+    };
+
+    document.getElementById("login").onclick = function () {
+        view.showLoginPopup();
+    };
+
+    document.getElementById("submitLogin").onclick = function () {
+        view.setundoLoginPopup();
     };
 
     this.showATip = function () {

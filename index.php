@@ -34,6 +34,9 @@
 
                         <button id="weatherButton" >WEATHER</button>
 
+
+                        <button id ="login">LOGIN</button>
+
         </div>
     </div>
 </nav>
@@ -127,6 +130,21 @@
         <button id="confirmEnd" style="width:100%; height: 100%">CONFIRM</button>
     </div>
 </section>
+
+    <section id="loginPopup" class="popup" style="height: 100%; width: 100%; display: none">
+        <class="popupbackgroud">
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username">
+
+
+        <label for="pass"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="pass">
+
+        <button id ="submitLogin">Login</button>
+
+        </div>
+    </section>
 
 </main>
 
