@@ -32,7 +32,8 @@ function Controller() {
             model.setStartLocation();
             startStop.removeEventListener("click", Start);
             startStop.addEventListener("click", Stop);
-            startStop.value = "Stop";
+            startStop.value = "STOP";
+            startStop.style.backgroundColor = "red";
         };
 
         function Stop () {
@@ -40,7 +41,8 @@ function Controller() {
             view.showEndRoutePopup();
             startStop.removeEventListener("click", Stop);
             startStop.addEventListener("click", Start);
-            startStop.value = "Start";
+            startStop.value = "START";
+            startStop.style.backgroundColor = "green";
         };
 
         document.getElementById("confirmEnd").onclick = function () {

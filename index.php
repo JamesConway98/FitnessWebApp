@@ -94,7 +94,7 @@
     </div>
     </div>
 <div id="googleMap" style="width:100%;"></div>
-    <input type="button" value="Start"  id="startRoute" />
+    <input type="button" value="START"  id="startRoute" />
 
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">

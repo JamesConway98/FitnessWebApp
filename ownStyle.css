@@ -18,13 +18,16 @@ main.closedmenu{
 
 #top{
     height: 15rem;
-    margin: 1rem;
+    padding: 0.5rem;
+    border: 0.5rem midnightblue solid;
+    border-radius: 1rem;
 
 }
 #weather{
     text-align: left;
     float: left;
     width: 15%;
+
 }
 
 #scoreBoard{
@@ -36,6 +39,7 @@ main.closedmenu{
 }
 #totalScore{
     float: right;
+    margin-right: 0.5rem;
 }
 
 #googleMap{
@@ -104,8 +108,16 @@ button{
 #startRoute{
     position: absolute;
     bottom: 3rem;
-    left: 29rem;
+    background-color: green;
+    left: 25rem;
+    border: 0.35rem solid black;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50rem;
+    font-size: 3em;
+    font-weight: 900;
 }
+
 section.popup {
     display: none;
     width:100vw;
