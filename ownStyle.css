@@ -21,6 +21,7 @@ main.closedmenu{
     padding: 0.5rem;
     border: 0.5rem midnightblue solid;
     border-radius: 1rem;
+    background-color: gainsboro;
 
 }
 #weather{
@@ -81,13 +82,13 @@ table {
 }
 
 table td, table th {
-    border: 1px solid #ddd;
+    border: 5px solid gainsboro;
     padding: 8px;
     color: white;
 }
 
 table tr{
-    background-color:#000022;
+    background-color:midnightblue;
 }
 
 
