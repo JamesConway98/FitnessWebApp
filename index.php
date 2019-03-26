@@ -20,12 +20,6 @@
                         <button id="challenge" >CHALLENGE</button>
 
 
-                        <button id="startRoute" >START ROUTE</button>
-
-
-                        <button id="stopRoute" hidden>STOP ROUTE</button>
-
-
                         <button id="socialMedia">SOCIAL MEDIA</button>
 
 
@@ -100,7 +94,7 @@
     </div>
     </div>
 <div id="googleMap" style="width:100%;"></div>
-</div>
+    <input type="button" value="Start"  id="startRoute" />
 
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">

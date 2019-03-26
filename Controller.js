@@ -25,15 +25,22 @@ function Controller() {
             view.openCloseNav();
         }
 
-        document.getElementById("startRoute").onclick = function () {
+        var startStop = document.getElementById("startRoute");
+        startStop.addEventListener("click", Start);
+        function Start () {
+
             model.setStartLocation();
-            view.showStopButton();
+            startStop.removeEventListener("click", Start);
+            startStop.addEventListener("click", Stop);
+            startStop.value = "Stop";
         };
 
-        document.getElementById("stopRoute").onclick = function () {
+        function Stop () {
             model.setEndLocation();
             view.showEndRoutePopup();
-            view.showStartButton();
+            startStop.removeEventListener("click", Stop);
+            startStop.addEventListener("click", Start);
+            startStop.value = "Start";
         };
 
         document.getElementById("confirmEnd").onclick = function () {
