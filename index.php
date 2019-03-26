@@ -40,9 +40,11 @@
 <main id="main" class="closedmenu">
     <div id = "top">
 <div id = "weather">
-    <p id = "temp"></p>
-    <p id = "wind"></p>
-    <p id = "desc"></p>
+    <div id="weatherImg"><img alt = "cloudy" src="res/Cloud.png"> </div>
+    <div id="city"></div>
+    <div id = "desc"></div>
+    <div id = "temp"></div>
+    <div id = "wind"></div>
 </div>
 <div id="scoreBoard">
     <?php

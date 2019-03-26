@@ -24,11 +24,38 @@ main.closedmenu{
 
 }
 #weather{
+    padding: 0.5rem;
     text-align: left;
     float: left;
-    width: 15%;
+    width: 25%;
+    height: 60%;
+    border: 0.2rem solid midnightblue;
+    border-radius: 1rem;
+    background: midnightblue;
+    color: white;
+}
+#weatherImg img {
+    width: 40%;
+    float: right;
+}
+#city{
+    font-size: 2em;
 
 }
+#temp{
+    font-size: 3.6em;
+
+}
+#desc{
+    font-size: 1.5em;
+
+}
+#wind{
+    font-size: 1.25em;
+    float: right;
+
+}
+
 
 #scoreBoard{
     overflow-y: scroll;

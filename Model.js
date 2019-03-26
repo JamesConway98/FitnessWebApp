@@ -84,28 +84,36 @@ function Model() {
         $(document).ready(function() {
             $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
 
-                    var temp = data.main.temp;
+                    var temp = Math.round(data.main.temp);
                     localStorage.setItem('storeTemp', temp);
-                    document.getElementById('temp').innerHTML = "The current temperature is: " + temp + "&#8451";
+                    document.getElementById('temp').innerHTML = temp + "&#8451";
 
                     var wind = Math.round(data.wind.speed * 3.6 * 10) / 10;
                     localStorage.setItem('storeWind', wind);
-                    document.getElementById('wind').innerHTML = "Wind: " + wind + " km/h";
+                    document.getElementById('wind').innerHTML = wind+ " km/h";
 
                     var desc = data.weather[0].main;
                     localStorage.setItem('storeDesc', desc);
                     document.getElementById('desc').innerHTML = desc;
 
+                    var city = data.name;
+                    localStorage.setItem('storeCity', city);
+                    document.getElementById('city').innerHTML = city;
+
+
             })
             .fail(function() {
-                var temp = localStorage.getItem('storeTemp');
-                document.getElementById('temp').innerHTML = "The current temperature is: " + temp + "&#8451";
+                var temp = Math.round(localStorage.getItem('storeTemp'));
+                document.getElementById('temp').innerHTML =  temp + "&#8451";
 
                 var wind = localStorage.getItem('storeWind');
-                document.getElementById('wind').innerHTML = "Wind: " + wind + " km/h";
+                document.getElementById('wind').innerHTML =  wind + " km/h";
 
                 var desc = localStorage.getItem('storeDesc');
                 document.getElementById('desc').innerHTML = desc;
+
+                var city = localStorage.getItem('storeCity');
+                document.getElementById('city').innerHTML = city;
             });
 
         });
