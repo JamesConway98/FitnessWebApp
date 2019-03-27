@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width-device-width, initial-scale-1.0,maximum-scale-1.0, user-scalable-no " />
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width-device-width, initial-scale-1.0,maximum-scale-1.0, user-scalable = 0 " />
 <title>Smart Commute</title>
 <link rel="stylesheet" type="text/css" href="Normalise.css" />
 <link rel="stylesheet" type="text/css" href="ownStyle.css" />
@@ -11,7 +12,7 @@
 
 
 <nav id="nav" class="closedmenu">
-    <p id="navmenu"> <img src="res/hamburger.png" alt="Menu" width="32" height="32"></p>
+    <p id="navmenu"> <img src="res/hamburger.png" alt="Menu" width="65" height="65"></p>
     <div id="navelem">
         <div id="tipnChallenge">
 
@@ -24,10 +25,6 @@
 
 
                         <button id="tips" >TIPS</button>
-
-
-                        <button id="weatherButton" >WEATHER</button>
-
 
                         <button id ="login">LOGIN</button>
 
@@ -91,11 +88,11 @@
     ?>
 </div>
         <div id = "totalScore">
-            <p id = "totalScore">Your Total Score -  <?php ?></p> <!--- TODO use database to get score or use local storage -->
-        <p id="distance">D</p>
+            <div id = "score">Your Total Score -  <?php ?></div> <!--- TODO use database to get score or use local storage -->
+        <div id="distance">D</div>
     </div>
     </div>
-<div id="googleMap" style="width:100%;"></div>
+<div id="googleMap"></div>
     <input type="button" value="START"  id="startRoute" />
 
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
