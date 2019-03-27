@@ -11,6 +11,12 @@ function Controller() {
         view.setundoEndPopup();
         view.setundoLoginPopup();
 
+        if(localStorage.getItem("loggedIn") != ""){
+            view.showLogoutButton();
+        }else{
+            view.showLoginButton();
+        }
+
         document.getElementById("tips").onclick = function (){
             view.showPopupForTips();
             view.setImage(Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
@@ -23,7 +29,7 @@ function Controller() {
 
         document.getElementById("navmenu").onclick = function (){
             view.openCloseNav();
-        }
+        };
 
         var startStop = document.getElementById("startRoute");
         startStop.addEventListener("click", Start);
@@ -33,7 +39,7 @@ function Controller() {
             startStop.removeEventListener("click", Start);
             startStop.addEventListener("click", Stop);
             startStop.value = "STOP";
-            startStop.style.backgroundColor = "red";
+            startStop.style.backgroundColor = "rgba(255, 0, 0, 0.3)";
         };
 
         function Stop () {
@@ -42,7 +48,7 @@ function Controller() {
             startStop.removeEventListener("click", Stop);
             startStop.addEventListener("click", Start);
             startStop.value = "START";
-            startStop.style.backgroundColor = "green";
+            startStop.style.backgroundColor = "rgba(0, 255, 0, 0.3)";
         };
 
         document.getElementById("confirmEnd").onclick = function () {
@@ -76,13 +82,14 @@ function Controller() {
     };
 
     document.getElementById("logout").onclick = function () {
+        model.logout();
         view.showLoginButton();
     };
 
     this.showATip = function () {
         view.showPopupForTips();
         view.setImage(Math.floor(Math.random() * (3 - 0 + 1) ) + 0);
-    }
+    };
 }
 var controller = new Controller();
 window.addEventListener("load", controller.init);

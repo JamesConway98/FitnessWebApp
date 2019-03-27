@@ -167,7 +167,7 @@ button{
 #startRoute{
     position: absolute;
     bottom: 3rem;
-    background-color: green;
+    background-color: rgba(0, 255, 0, 0.3);
     left: 25rem;
     border: 0.35rem solid black;
     height: 15rem;

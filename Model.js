@@ -70,7 +70,8 @@ function Model() {
         return this.calcDistance() * document.getElementById("myRange").value;
     };
     this.addScoreTotal = function () {
-        localStorage.setItem("totalScore", localStorage.getItem("totalScore")+this.calcEndScore());
+        var currentScore = localStorage.getItem("totalScore");
+        localStorage.setItem("totalScore",  parseInt(currentScore)+this.calcEndScore());
     };
 
     this.setLogin = function (username){

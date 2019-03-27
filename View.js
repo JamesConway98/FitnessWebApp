@@ -130,7 +130,6 @@ function View(){
             loginShown = true;
         }
 
-        //this shows value of slider
         var email = document.getElementById("emailEntry");
         var password = document.getElementById("passwordEntry");
 
