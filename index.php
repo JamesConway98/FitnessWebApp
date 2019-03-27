@@ -129,7 +129,7 @@
 </section>
 
     <section id="loginPopup" class="popup" style="height: 100%; width: 100%; display: none">
-        <class="popupbackgroud">
+        <div class="popupbackgroud">
 
         <label for="username"><b>Username</b></label>
         <input id ="username" type="text" placeholder="Enter Username" name="username">
