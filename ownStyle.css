@@ -38,6 +38,7 @@ main.closedmenu{
     background: #336699;
     color: white;
     margin-right: 0.5rem;
+
 }
 #weatherImg img {
     width: 40%;
@@ -45,10 +46,12 @@ main.closedmenu{
 }
 #city{
     font-size: 2em;
+    display: flex;
 
 }
 #temp{
     font-size: 3.6em;
+    display: flex;
 
 }
 #desc{
@@ -57,7 +60,6 @@ main.closedmenu{
 }
 #wind{
     font-size: 1.25em;
-    float: right;
 
 }
 
@@ -85,9 +87,12 @@ main.closedmenu{
 
 }
 
-#distance{
-
+#distance{    color: #336699;
+    font-size: 1.65em;
+    font-weight: 900;
 }
+
+
 
 #googleMap{
     height: calc(100% - 18rem);
@@ -136,11 +141,16 @@ nav {
     font-size: 0.8rem;
     height: calc(100% - 0.55rem);
 }
+
+nav img{
+    width: 5rem;
+    height: 5rem;
+}
 #navelem{
     display: none;
 }
 nav.closedmenu{
-    width:4rem;
+    width:5.5rem;
 }
 
 
@@ -148,11 +158,11 @@ button{
     margin: 0.2rem;
     font-size: 0.75rem;
     padding: 0.5rem;
-    background: rgb(201,239,187);
+    background: #336699;
     font-weight: bold;
     text-align: left;
     cursor: pointer;
-    color: black;
+    color: white;
     background-size:40px;
     border: 0px;
     border-radius: 0.2rem;
@@ -195,10 +205,10 @@ section.popup {
     top: calc(100% - 66rem);
     left: calc(100% - 24rem);
     margin-left: -35vmin;
-    background: midnightblue;
+    background: #336699;;
     width: 30rem;
     color: white;
-    border: 1rem solid gainsboro;
+    border: 1rem solid white;
     border-radius: 1rem;
     font-size: 2.2em;
     position: relative;
@@ -212,8 +222,8 @@ section.popup {
     height: 5rem;
     width: 5rem;
     text-align: center;
-    background: gainsboro;
-    color: midnightblue;
+    background: white;
+    color: #336699;;
     border-radius: 1rem;
     font-size: 1em;
     margin-right: 1rem;
@@ -221,7 +231,15 @@ section.popup {
     right: 0rem;
     bottom: 0.5rem;
 }
+#confirm{
+    width: 35rem;
+}
+#confirmEnd{
+    font-size: 1em;
+}
 .popupbackgroud img{
     height: 66%;
     width: 66%;
+    border: 0.25rem solid white;
+    border: 1rem;
 }
