@@ -31,6 +31,8 @@
 
                         <button id ="logout" hidden>LOGOUT</button>
 
+                        <button id="ongoingChallenges">ACCEPTED CHALLENGES</button>
+
         </div>
     </div>
 </nav>
@@ -102,17 +104,32 @@
         <p id="apple" style="display: none;" ><img alt = "Apple" src="res/apple.jpg" > </p>
         <p id="walk" style="display: none;" ><img alt = "Walk" src = "res/walk.jpg" > </p>
         <p id="greentea" style="display: none;" ><img alt = "Green Tea" src="res/greentea.jpg" > </p>
-
-        <div id = "tip">Stay healthy!</div>
+        <p id="t1"></p>
+        <p id="t2"></p>
         <button id = "tipButton"> OK </button>
     </div>
 </section>
 <section id="popup12" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
-        <p>Drink more water</p>
-        <p>Go for a run</p>
-        <p> Eat more fruit</p>
-        <p>... so on ...</p>
+        <p id="ch1"></p>
+        <p id="ch2"></p>
+        <p id="ch3"></p>
+        <button id="accept">ACCEPT</button>
+    </div>
+</section>
+<section id="acceptedChallenges" class="popup" style="height: 100%; width: 100%; display: none">
+    <div id="accepted"  class="popupbackgroud"  >
+        <p> ACCEPTED CHALLENGES</p>
+        <table id="table" style=" overflow-y: scroll; " >
+            <tr>
+                <td>
+                    Challenge
+                </td>
+                <td class="checkbox" style="width: 25px;">
+                    Done
+                </td>
+            </tr>
+        </table>
     </div>
 </section>
 

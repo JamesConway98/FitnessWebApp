@@ -2,6 +2,7 @@
 function Controller() {
     var model = new Model();
     var view = new View();
+    var randNumber;
 
 
     this.init = function () {
@@ -23,8 +24,21 @@ function Controller() {
 
 
         document.getElementById("challenge").onclick =function (){
+            randNumber= Math.floor(Math.random() * (2 - 0 + 1) ) + 0;
             view.showPopupForChallenges();
+            view.showChallangeContent(randNumber);
         };
+
+        document.getElementById("accept").onclick =function (){
+            view.acceptChallenge(randNumber);
+            view.setDeleteChallenge(randNumber);
+
+        };
+
+        document.getElementById("ongoingChallenges").onclick=function(){
+            view.showPopupForAcceptedChallenges();
+        };
+
 
         document.getElementById("navmenu").onclick = function (){
             view.openCloseNav();

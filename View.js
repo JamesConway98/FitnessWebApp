@@ -4,6 +4,7 @@ function View(){
         challengesShown =false,
         openNav = false,
         endShown=false,
+        accchall=false,
         loginShown = false,
         addMouseAndTouchUp = function (elementID, handler) {
             //utility function to add both mouseup and touchend events and prevent double events
@@ -39,7 +40,8 @@ function View(){
             document.getElementById("apple").style.display="none";
             document.getElementById("walk").style.display="none";
             document.getElementById("greentea").style.display="none";
-            document.getElementById("tip").innerHTML= "Always remember to stay hydrated!";
+            document.getElementById("t1").innerText = "Drink 2 Liters of water per day";
+            document.getElementById("t2").innerText="to keep your body hydrated and fresh!";
 
 
         }else if(number === 1){
@@ -47,20 +49,67 @@ function View(){
             document.getElementById("walk").style.display="none";
             document.getElementById("greentea").style.display="none";
             document.getElementById("water").style.display="none";
-            document.getElementById("tip").innerHTML= "Eat your 5-a day!";
+            document.getElementById("t1").innerText = "have your 5-a-day!";
+            document.getElementById("t2").innerText="Eating fruit supplies the vitamins needed ";
+
         }else if(number ===2){
             document.getElementById("walk").style.display="block";
             document.getElementById("greentea").style.display="none";
             document.getElementById("water").style.display="none";
             document.getElementById("apple").style.display="none";
-            document.getElementById("tip").innerHTML= "Go for a walk!";
+            document.getElementById("t1").innerText="Go for a walk!";
+            document.getElementById("t2").innerText = "Walking keeps you fit & is environmentally friendly too!";
         }else{
             document.getElementById("greentea").style.display="block";
             document.getElementById("water").style.display="none";
             document.getElementById("apple").style.display="none";
             document.getElementById("walk").style.display="none";
-            document.getElementById("tip").innerHTML= "Relax after exercise!";
+            document.getElementById("t1").innerText = "Green tea is full of antioxidants";
+            document.getElementById("t2").innerText="that prevents the formation of cancer!";
         }
+    };
+
+    this.showChallangeContent = function (num) {
+        if(num==0){
+            document.getElementById("ch1").innerText="WALKING CHALLENGE";
+            document.getElementById("ch2").innerText="Go for a 20 min walk everyday for the next 3 days!";
+            document.getElementById("ch3").innerText="Helps reducing the stress and frees your mind";
+        } else if(num==1){
+            document.getElementById("ch1").innerText="SUGAR FREE";
+            document.getElementById("ch2").innerText="Can you go without any sugar for 3 day ?";
+            document.getElementById("ch3").innerText="naturally-occurring sugar (in fruit) is okay but try to avoid goods with added sugar.";
+        }else if(num==2){
+            document.getElementById("ch1").innerText="EXERCISE ";
+            document.getElementById("ch2").innerText="Do 15 min worth intensive exercise for a week!";
+            document.getElementById("ch3").innerText="Whether it is running, swimming or gym classes is up to you.";
+        }
+    };
+
+    this.acceptChallenge = function (number) {
+        var table=document.getElementById("table"),
+            row = table.insertRow(1),
+            chb = document.createElement("INPUT"),
+            column1 = row.insertCell(0),
+            column2 = row.insertCell(1);
+        column1.innerText = document.getElementById("ch1").textContent;
+        chb.setAttribute("type","checkbox");
+        chb.setAttribute("id","checkbox"+number.toString());
+        // chb.setAttribute("width","10rem");
+        // chb.setAttribute("height","10rem");
+        window.alert("accepted the challenge "+ "checkbox"+number.toString())
+        column2.appendChild(chb);
+
+    };
+
+    this.setDeleteChallenge = function (number) { //DOES NOT WORK
+        var elementName = "checkbox"+number.toString();
+        window.alert(elementName.rowIndex.toString());
+        document.getElementById(elementName).addEventListener("click",function () {
+            var myTable= document.getElementById("table");
+            myTable.deleteRow(elementName.rowIndex);
+            console.log(elementName.rowIndex);
+            window.alert(elementName.rowIndex);
+        });
     };
 
 
@@ -87,6 +136,17 @@ function View(){
 
         }
     };
+    this.showPopupForAcceptedChallenges =function () {
+        if(accchall){
+            document.getElementById("acceptedChallenges").style.display="none";
+            accchall=false;
+        }else{
+            document.getElementById("acceptedChallenges").style.display="block";
+            history.pushState(null,null,"#trick");
+            accchall=false;
+        }
+    };
+
     this.setundoPopup =function (){
         addMouseAndTouchUp("popup1", function () {
             window.history.back();
@@ -98,6 +158,12 @@ function View(){
             window.history.back();
             document.getElementById("popup12").style.display="none";
             challengesShown=false;
+        });
+
+        addMouseAndTouchUp("acceptedChallenges",function () {
+            window.history.back();
+            document.getElementById("acceptedChallenges").style.display="none";
+            accchall=false;
         })
     };
 
