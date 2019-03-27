@@ -39,22 +39,27 @@ function View(){
             document.getElementById("apple").style.display="none";
             document.getElementById("walk").style.display="none";
             document.getElementById("greentea").style.display="none";
+            document.getElementById("tip").innerHTML= "Always remember to stay hydrated!";
+
 
         }else if(number === 1){
             document.getElementById("apple").style.display="block";
             document.getElementById("walk").style.display="none";
             document.getElementById("greentea").style.display="none";
             document.getElementById("water").style.display="none";
+            document.getElementById("tip").innerHTML= "Eat your 5-a day!";
         }else if(number ===2){
             document.getElementById("walk").style.display="block";
             document.getElementById("greentea").style.display="none";
             document.getElementById("water").style.display="none";
             document.getElementById("apple").style.display="none";
+            document.getElementById("tip").innerHTML= "Go for a walk!";
         }else{
             document.getElementById("greentea").style.display="block";
             document.getElementById("water").style.display="none";
             document.getElementById("apple").style.display="none";
             document.getElementById("walk").style.display="none";
+            document.getElementById("tip").innerHTML= "Relax after exercise!";
         }
     };
 

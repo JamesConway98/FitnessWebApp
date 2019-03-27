@@ -98,14 +98,13 @@
 
 <section id="popup1" class="popup" style="height: 100%; width: 100%; display: none">
     <div class="popupbackgroud">
-        <p id="water" style="display: none;" ><img alt = "Water" src="res/water.jpg" style="width:100%; height: 40%"> </p>
-        <p id="apple" style="display: none;" ><img alt = "Apple" src="res/apple.jpg" style="width:100%; height: 40%"> </p>
-        <p id="walk" style="display: none;" ><img alt = "Walk" src = "res/walk.jpg" style="width:100%; height: 40%"> </p>
-        <p id="greentea" style="display: none;" ><img alt = "Green Tea" src="res/greentea.jpg" style="width:100%; height: 40%"> </p>
+        <p id="water" style="display: none;" ><img alt = "Water" src="res/water.jpg" > </p>
+        <p id="apple" style="display: none;" ><img alt = "Apple" src="res/apple.jpg" > </p>
+        <p id="walk" style="display: none;" ><img alt = "Walk" src = "res/walk.jpg" > </p>
+        <p id="greentea" style="display: none;" ><img alt = "Green Tea" src="res/greentea.jpg" > </p>
 
-        <p>Go for a run</p>
-        <p> Eat more fruit</p>
-        <p>... so on ...</p>
+        <div id = "tip">Stay healthy!</div>
+        <button id = "tipButton"> OK </button>
     </div>
 </section>
 <section id="popup12" class="popup" style="height: 100%; width: 100%; display: none">
