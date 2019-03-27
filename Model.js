@@ -11,11 +11,52 @@ function Model() {
 
     this.initMap = function () {
         getLocation();
+        setTimeout(function(){
+            $(document).ready(function() {
+                $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
+
+                    var temp = Math.round(data.main.temp);
+                    localStorage.setItem('storeTemp', temp);
+                    document.getElementById('temp').innerHTML = temp + "&#8451";
+
+                    var wind = Math.round(data.wind.speed * 3.6 * 10) / 10;
+                    localStorage.setItem('storeWind', wind);
+                    document.getElementById('wind').innerHTML = wind+ " km/h";
+
+                    var desc = data.weather[0].main;
+                    localStorage.setItem('storeDesc', desc);
+                    document.getElementById('desc').innerHTML = desc;
+
+                    var city = data.name;
+                    localStorage.setItem('storeCity', city);
+                    document.getElementById('city').innerHTML = city;
+
+
+                })
+                    .fail(function() {
+                        var temp = Math.round(localStorage.getItem('storeTemp'));
+                        document.getElementById('temp').innerHTML =  temp + "&#8451";
+
+                        var wind = localStorage.getItem('storeWind');
+                        document.getElementById('wind').innerHTML =  wind + " km/h";
+
+                        var desc = localStorage.getItem('storeDesc');
+                        document.getElementById('desc').innerHTML = desc;
+
+                        var city = localStorage.getItem('storeCity');
+                        document.getElementById('city').innerHTML = city;
+                    });
+
+            });
+
+        }, 100);
+
     };
 
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
+
             return {lat: latitude, lng: longitude};
         } else {
             map.innerHTML = "Geolocation is not supported by this browser.";
@@ -82,6 +123,8 @@ function Model() {
         localStorage.setItem("loggedIn", "");
     };
     this.initWeather = function () {
+
+        console.log(latitude);
         $(document).ready(function() {
             $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
 
