@@ -89,9 +89,10 @@
 </div>
         <div id = "totalScore">
             <div id = "score">Your Total Score -  <?php ?></div> <!--- TODO use database to get score or use local storage -->
-        <div id="distance">D</div>
+
     </div>
     </div>
+    <p id="distance"></p>
 <div id="googleMap"></div>
     <input type="button" value="START"  id="startRoute" />
 
