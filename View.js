@@ -231,7 +231,13 @@ function View(){
     };
 
     this.setNewScore = function(){
-        document.getElementById("totalScore").innerHTML = "Your Total Score - " + localStorage.getItem("totalScore");
+        if(localStorage.getItem("totalDaysWalked") == null){
+            document.getElementById("totalScore").innerHTML = "Your Total Score 0" +
+                " <br>Your Total Days Walked 0";
+        }else {
+            document.getElementById("totalScore").innerHTML = "Your Total Score " + localStorage.getItem("totalScore") +
+                " <br>Your Total Days Walked " + localStorage.getItem("totalDaysWalked");
+        }
     };
 
 }

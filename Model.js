@@ -7,6 +7,8 @@ function Model() {
         startTime,
         endTime,
         latitude,
+        lastWalkDay,
+        totalDaysWalked,
         longitude;
 
     this.initMap = function () {
@@ -87,7 +89,8 @@ function Model() {
     };
 
     this.setEndLocation = function () {
-        endLocation = getLocation();
+        //endLocation = getLocation();
+        endLocation = {lat: 1, lng: 1};
         endTime = new Date();
         console.log(getLocation());
     };
@@ -106,13 +109,33 @@ function Model() {
         return google.maps.geometry.spherical.computeDistanceBetween(p1, p2); //distance in KiloMeters
     };
 
+    this.calcSpeed = function () {
+      return this.calcDistance()/ (endTime-startTime);
+    };
+
     this.calcEndScore = function(){
-        //TODO use percentage ran/walked/cycled with distance travelled to calculate a score
+        //if average speed is > 25 mph and user says they walk/cycle/ran more than 50% then something isnt right
+        if(this.calcSpeed() > 670 && document.getElementById("myRange").value > 50){
+            return -1;
+        }
+
+        if(localStorage.getItem("lastDayWalked") == null){
+            localStorage.setItem("totalDaysWalked",  "1");
+            localStorage.setItem("lastDayWalked", new Date().toDateString());
+            localStorage.setItem("totalScore", "0");
+        }
+        //if last walked day isnt today then add one day on
+        else if(localStorage.getItem("lastDayWalked") != new Date().toDateString()){
+            var currentDays = localStorage.getItem("totalDaysWalked");
+            localStorage.setItem("totalDaysWalked",  parseInt(currentDays)+1);
+            localStorage.setItem("lastDayWalked", new Date().toDateString());
+        }
         return this.calcDistance() * document.getElementById("myRange").value;
     };
     this.addScoreTotal = function () {
         var currentScore = localStorage.getItem("totalScore");
         localStorage.setItem("totalScore",  parseInt(currentScore)+this.calcEndScore());
+
     };
 
     this.setLogin = function (username){
@@ -122,6 +145,7 @@ function Model() {
     this.logout = function (){
         localStorage.setItem("loggedIn", "");
     };
+
     this.initWeather = function () {
 
         console.log(latitude);

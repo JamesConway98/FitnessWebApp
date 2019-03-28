@@ -10,6 +10,7 @@ function Controller() {
         view.setundoPopup();
         view.setundoEndPopup();
         view.setundoLoginPopup();
+        view.setNewScore();
 
         if(localStorage.getItem("loggedIn") != ""){
             view.showLogoutButton();
@@ -65,8 +66,9 @@ function Controller() {
         };
 
         document.getElementById("confirmEnd").onclick = function () {
-            //printing the total time of journey
-            if(model.totalTime() < 2){
+            if(model.calcEndScore() < 0){
+                document.getElementById("distance").innerHTML = "You cannot walk/run/cycle that fast.";
+            } else if(model.totalTime() < 2){
                 document.getElementById("distance").innerHTML = "Distance travelled on route - " + model.calcDistance() + " Metres." +
                     " It took 1 minute. This scored " + model.calcEndScore() + " points.";
             }else {
