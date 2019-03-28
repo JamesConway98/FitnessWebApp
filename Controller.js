@@ -34,9 +34,14 @@ function Controller() {
             view.acceptChallenge(randNumber);
         };
 
+        document.getElementById("accept").ontouchstart= function (){
+            view.acceptChallenge(randNumber);
+        };
+
         document.getElementById("done").onclick = function (){
             view.deleteTickedChallenges(randNumber);
         };
+
 
 
         document.getElementById("cancel").onclick = function(){

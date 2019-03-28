@@ -250,6 +250,8 @@ section.popup {
     position: absolute;
     right: 0rem;
     bottom: 0.5rem;
+    cursor: pointer;
+
 }
 #done{
     float: right;

@@ -137,7 +137,7 @@
                 </td>
             </tr>
         </table>
-        <button id="done">DONE</button>
+        <button id="done" style="cursor: pointer">DONE</button>
         <button id="cancel">CANCEL</button>
     </div>
 </section>
