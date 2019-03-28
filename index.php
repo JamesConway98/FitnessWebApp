@@ -120,6 +120,7 @@
         <p id="ch1"></p>
         <p id="ch2"></p>
         <p id="ch3"></p>
+        <p id="ch4"></p>
         <button id="accept">ACCEPT</button>
     </div>
 </section>
@@ -136,6 +137,8 @@
                 </td>
             </tr>
         </table>
+        <button id="done">DONE</button>
+        <button id="cancel">CANCEL</button>
     </div>
 </section>
 

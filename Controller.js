@@ -25,15 +25,24 @@ function Controller() {
 
 
         document.getElementById("challenge").onclick =function (){
-            randNumber= Math.floor(Math.random() * (2 - 0 + 1) ) + 0;
+            randNumber= Math.floor(Math.random() * (3 - 0 + 1) ) + 0;
             view.showPopupForChallenges();
-            view.showChallangeContent(randNumber);
+            view.showChallengeContent(randNumber);
         };
 
         document.getElementById("accept").onclick =function (){
             view.acceptChallenge(randNumber);
-            view.setDeleteChallenge(randNumber);
+        };
 
+        document.getElementById("done").onclick = function (){
+            view.deleteTickedChallenges(randNumber);
+        };
+
+
+        document.getElementById("cancel").onclick = function(){
+            window.history.back();
+            document.getElementById("acceptedChallenges").style.display="none";
+            view.setAccchall(false);
         };
 
         document.getElementById("ongoingChallenges").onclick=function(){

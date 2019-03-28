@@ -4,8 +4,15 @@ function View(){
         challengesShown =false,
         openNav = false,
         endShown=false,
-        accchall=false,
+        accchall=false,//accepted challenges = accchall
+        walking=true, // booleans to decide if a challenge is already accepted or not
+        running =true,
+        exercise = true,
+        sugar =true,
         loginShown = false,
+        model =  new Model(),
+        score=0,
+        listOfCheckboxes=[],
         addMouseAndTouchUp = function (elementID, handler) {
             //utility function to add both mouseup and touchend events and prevent double events
             var element = document.getElementById(elementID),
@@ -69,47 +76,92 @@ function View(){
         }
     };
 
-    this.showChallangeContent = function (num) {
-        if(num==0){
+    this.showChallengeContent = function (num) {
+        if(num==0 && walking){
+            walking=false;
+            score=10;
             document.getElementById("ch1").innerText="WALKING CHALLENGE";
             document.getElementById("ch2").innerText="Go for a 20 min walk everyday for the next 3 days!";
-            document.getElementById("ch3").innerText="Helps reducing the stress and frees your mind";
-        } else if(num==1){
+            document.getElementById("ch3").innerText="Helps reducing the stress and frees your mind.";
+            document.getElementById("ch4").innerText="(Score: 10)";
+        } else if(num==1 && sugar){
+            sugar=false;
+            score=40;
             document.getElementById("ch1").innerText="SUGAR FREE";
             document.getElementById("ch2").innerText="Can you go without any sugar for 3 day ?";
             document.getElementById("ch3").innerText="naturally-occurring sugar (in fruit) is okay but try to avoid goods with added sugar.";
-        }else if(num==2){
+            document.getElementById("ch4").innerText="(Score: 40)";
+        }else if(num==2 && exercise){
+            exercise =false;
+            score=25;
             document.getElementById("ch1").innerText="EXERCISE ";
             document.getElementById("ch2").innerText="Do 15 min worth intensive exercise for a week!";
             document.getElementById("ch3").innerText="Whether it is running, swimming or gym classes is up to you.";
-        }
+            document.getElementById("ch4").innerText="(Score: 25)";
+        } else if(num==3 && running){
+            running=false;
+            score=30;
+            document.getElementById("ch1").innerText="RUNNING CHALLENGE ";
+            document.getElementById("ch2").innerText="Go for a 20 min run for the next 5days!";
+            document.getElementById("ch3").innerText="Running strengthens your heart.";
+            document.getElementById("ch4").innerText="(Score: 30)";
+        } else {
+
+            }
     };
 
     this.acceptChallenge = function (number) {
         var table=document.getElementById("table"),
             row = table.insertRow(1),
+            go=true,
+            acceptedchallenges=[],
             chb = document.createElement("INPUT"),
             column1 = row.insertCell(0),
             column2 = row.insertCell(1);
-        column1.innerText = document.getElementById("ch1").textContent;
-        chb.setAttribute("type","checkbox");
-        chb.setAttribute("id","checkbox"+number.toString());
-        // chb.setAttribute("width","10rem");
-        // chb.setAttribute("height","10rem");
-        window.alert("accepted the challenge "+ "checkbox"+number.toString())
-        column2.appendChild(chb);
+        for(var x=0;x<acceptedchallenges.length;x++){
+            if(acceptedchallenges[x]===number){
+                window.alert("You are already doing this challenge.")
+                go =false;
+            };
+        }
+        if(go){
+            acceptedchallenges.push(number);
+            column1.innerText = document.getElementById("ch1").textContent;
+            chb.setAttribute("type","checkbox");
+            chb.setAttribute("id","checkbox"+number.toString());
+            chb.setAttribute("width","30px");
+            chb.setAttribute("height","30px");
+            row.setAttribute("id",number.toString());
+            column2.appendChild(chb);
+            listOfCheckboxes.push(chb);
+            acceptedchallenges.push(number);
+            model.addScore(score);
+        }
+
+
+
 
     };
 
-    this.setDeleteChallenge = function (number) { //DOES NOT WORK
-        var elementName = "checkbox"+number.toString();
-        window.alert(elementName.rowIndex.toString());
-        document.getElementById(elementName).addEventListener("click",function () {
-            var myTable= document.getElementById("table");
-            myTable.deleteRow(elementName.rowIndex);
-            console.log(elementName.rowIndex);
-            window.alert(elementName.rowIndex);
-        });
+    this.deleteTickedChallenges = function () {
+        for(var i=0;i<listOfCheckboxes.length;i++){
+            if(listOfCheckboxes[i].checked){
+                var elementId = listOfCheckboxes[i].id;
+                var pos =  elementId.charAt(8);
+                var elem = document.getElementById(pos);
+                 elem.parentNode.removeChild(elem);
+            }
+        }
+         if(pos===0){
+             walking=true;
+         }else if(pos===1){
+             sugar=true;
+         }else if(pos===2){
+             exercise=true;
+         }else{
+             running=true;
+         }
+
     };
 
 
@@ -234,5 +286,13 @@ function View(){
                 " <br>Your Total Days Walked " + localStorage.getItem("totalDaysWalked");
         }
     };
+
+    this.getAccchall = function () {
+        return accchall;
+    };
+
+    this.setAccchall = function (boolean) {
+        accchall=boolean;
+    }
 
 }
