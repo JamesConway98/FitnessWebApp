@@ -13,6 +13,8 @@ function Model() {
 
     this.initMap = function () {
         getLocation();
+
+
         setTimeout(function(){
             $(document).ready(function() {
                 $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
@@ -50,8 +52,62 @@ function Model() {
                     });
 
             });
+            console.log(map);
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            map.addListener('bounds_changed', function() {
+                searchBox.setBounds(map.getBounds());
+                var markers = [];
+                // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
+                searchBox.addListener('places_changed', function() {
+                    var places = searchBox.getPlaces();
 
-        }, 100);
+                    if (places.length == 0) {
+                        return;
+                    }
+
+                    // Clear out the old markers.
+                    markers.forEach(function(marker) {
+                        marker.setMap(null);
+                    });
+                    markers = [];
+
+                    // For each place, get the icon, name and location.
+                    var bounds = new google.maps.LatLngBounds();
+                    places.forEach(function(place) {
+                        if (!place.geometry) {
+                            console.log("Returned place contains no geometry");
+                            return;
+                        }
+                        var icon = {
+                            url: place.icon,
+                            size: new google.maps.Size(71, 71),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(17, 34),
+                            scaledSize: new google.maps.Size(25, 25)
+                        };
+
+                        // Create a marker for each place.
+                        markers.push(new google.maps.Marker({
+                            map: map,
+                            icon: icon,
+                            title: place.name,
+                            position: place.geometry.location
+                        }));
+
+                        if (place.geometry.viewport) {
+                            // Only geocodes have viewport.
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+                    });
+
+                });
+            });
+            }, 1000);
 
     };
 
@@ -81,6 +137,7 @@ function Model() {
         map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
         marker.setMap(map);
     }
+   
 
     this.setStartLocation = function () {
         startLocation = getLocation();
@@ -146,45 +203,5 @@ function Model() {
         localStorage.setItem("loggedIn", "");
     };
 
-    this.initWeather = function () {
-
-        console.log(latitude);
-        $(document).ready(function() {
-            $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
-
-                    var temp = Math.round(data.main.temp);
-                    localStorage.setItem('storeTemp', temp);
-                    document.getElementById('temp').innerHTML = temp + "&#8451";
-
-                    var wind = Math.round(data.wind.speed * 3.6 * 10) / 10;
-                    localStorage.setItem('storeWind', wind);
-                    document.getElementById('wind').innerHTML = wind+ " km/h";
-
-                    var desc = data.weather[0].main;
-                    localStorage.setItem('storeDesc', desc);
-                    document.getElementById('desc').innerHTML = desc;
-
-                    var city = data.name;
-                    localStorage.setItem('storeCity', city);
-                    document.getElementById('city').innerHTML = city;
-
-
-            })
-            .fail(function() {
-                var temp = Math.round(localStorage.getItem('storeTemp'));
-                document.getElementById('temp').innerHTML =  temp + "&#8451";
-
-                var wind = localStorage.getItem('storeWind');
-                document.getElementById('wind').innerHTML =  wind + " km/h";
-
-                var desc = localStorage.getItem('storeDesc');
-                document.getElementById('desc').innerHTML = desc;
-
-                var city = localStorage.getItem('storeCity');
-                document.getElementById('city').innerHTML = city;
-            });
-
-        });
-    };
 
 }

@@ -95,6 +95,7 @@
         </div>
     </div>
     <p id="distance"></p>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="googleMap"></div>
     <input type="button" value="START"  id="startRoute" />
 
@@ -166,6 +167,7 @@
 <script src ="View.js"></script>
 <script src ="Controller.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap&libraries=geometry"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF2AunIpNLNGJv6gE7DphRoLgyydnv1K0&libraries=places"></script>
 
 </body>
 </html>
