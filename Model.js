@@ -7,12 +7,15 @@ function Model() {
         startTime,
         endTime,
         latitude,
-        lastWalkDay,
-        totalDaysWalked,
         longitude;
 
     this.initMap = function () {
         getLocation();
+
+        //update location every 20 seconds
+        setInterval(function(){
+            getLocation();
+        }, 20000);
 
 
         setTimeout(function(){
