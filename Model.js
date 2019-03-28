@@ -198,6 +198,11 @@ function Model() {
 
     };
 
+    this.addScore = function(score){
+        var currentScore = localStorage.getItem("totalScore");
+        localStorage.setItem("totalScore",  parseInt(currentScore)+score);
+    };
+
     this.setLogin = function (username){
         localStorage.setItem("loggedIn", username);
     };
@@ -206,39 +211,5 @@ function Model() {
         localStorage.setItem("loggedIn", "");
     };
 
-    this.uploadFacebook = function() {
-        FB.ui({
-            method: 'share_open_graph',
-            action_type: 'namespace:action_type',
-            action_properties: JSON.stringify({
-                object_type:
-                    {
-                        'og:type': 'namespace:object_type',
-                        'og:title': 'I scored 10 points on this ridiculous game...',
-                        'og:image': 'http://www.bizreport.com/2011/02/03/android-logo-200x200.jpg',
-                        'og:description': 'Description'
-                    }
-            })
-        }, function (response) {
-            if (response.post_id != null) {
-                // handle response
-            }
-        });
-        FB.ui({
-            method: 'feed',
-            link: 'http://mysite.com/link-to-my-game',
-            picture: 'http://www.bizreport.com/2011/02/03/android-logo-200x200.jpg',
-            name: 'I scored 10 points on this ridiculous game...',
-            description: 'Description',
-            actions: [
-                {name: 'Name of my site', link: 'http://mysite.com/'}
-            ],
-            display: 'popup'
-        }, function (response) {
-            if (response && response.post_id) {
-                // handle response
-            }
-        });
-    }
 
 }
