@@ -209,7 +209,7 @@ section.popup {
     height: 35rem;
     position: absolute;
     top: 20vh; /*calc(100% - 66rem) */
-    left:50vw; /* calc(100% - 24rem)*/
+    left:55%; /* calc(100% - 24rem)*/
     margin-left: -35vmin;
     background: #336699;;
     width: 35rem;
@@ -217,7 +217,7 @@ section.popup {
     border: 1rem solid white;
     border-radius: 1rem;
     font-size: 2.2em;
-    position: relative;
+
 }
 #tip{
     float: left;
@@ -339,4 +339,10 @@ input[type=range]::-webkit-slider-thumb {
 #twitter_button{
     height: 100%;
     width:100%;
+}
+
+#pac-input{
+    font-size: 2.5em;
+    height: 80px;
+    width: 500px;
 }

@@ -199,7 +199,7 @@ function Model() {
             localStorage.setItem("totalDaysWalked", parseInt(currentDays) + 1);
             localStorage.setItem("lastDayWalked", new Date().toDateString());
         }
-        return this.calcDistance() * document.getElementById("myRange").value;
+        return (this.calcDistance() * document.getElementById("myRange").value) /10;
     };
     this.addScoreTotal = function () {
         var currentScore = localStorage.getItem("totalScore");
