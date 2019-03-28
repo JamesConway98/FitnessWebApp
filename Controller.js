@@ -62,7 +62,8 @@ function Controller() {
         var startStop = document.getElementById("startRoute");
         startStop.addEventListener("click", Start);
         function Start () {
-            model.drawRoute();
+            model.initDestServices();
+            model.drawRoute(1);
             model.setStartLocation();
             startStop.removeEventListener("click", Start);
             startStop.addEventListener("click", Stop);
@@ -72,7 +73,7 @@ function Controller() {
 
         function Stop () {
             model.setEndLocation();
-            //model.drawRoute(0);
+            model.drawRoute(0);
             view.showEndRoutePopup();
             startStop.removeEventListener("click", Stop);
             startStop.addEventListener("click", Start);
