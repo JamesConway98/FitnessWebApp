@@ -160,11 +160,6 @@ function View(){
             challengesShown=false;
         });
 
-        addMouseAndTouchUp("acceptedChallenges",function () {
-            window.history.back();
-            document.getElementById("acceptedChallenges").style.display="none";
-            accchall=false;
-        })
     };
 
     this.showEndRoutePopup = function () {

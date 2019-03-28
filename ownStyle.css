@@ -126,7 +126,6 @@ table tr{
 }
 
 
-
 table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -264,4 +263,8 @@ section.popup {
     width: 66%;
     border: 0.25rem solid white;
     border: 1rem;
+}
+
+#myRange{
+    height: 150%;
 }
