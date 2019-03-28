@@ -110,6 +110,7 @@ function Model() {
                             bounds.extend(place.geometry.location);
                         }
                     });
+                    map.fitBounds(bounds);
 
                 });
             });
@@ -229,6 +230,7 @@ function Model() {
         if (n === 0) {
             directionsDisplay.setMap(null);
             directionsDisplay = null;
+
         }
         else {
 
