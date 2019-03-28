@@ -7,7 +7,10 @@ function Model() {
         startTime,
         endTime,
         latitude,
+        destMarker,
+        currPosMarker,
         longitude;
+    var setup = false;
 
     this.initMap = function () {
         getLocation();
@@ -55,31 +58,23 @@ function Model() {
                     });
 
             });
-            console.log(map);
             var input = document.getElementById('pac-input');
             var searchBox = new google.maps.places.SearchBox(input);
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            map.addListener('bounds_changed', function() {
+            map.addListener('bounds_changed', function () {
                 searchBox.setBounds(map.getBounds());
-                var markers = [];
                 // Listen for the event fired when the user selects a prediction and retrieve
                 // more details for that place.
-                searchBox.addListener('places_changed', function() {
+                searchBox.addListener('places_changed', function () {
                     var places = searchBox.getPlaces();
 
                     if (places.length == 0) {
                         return;
                     }
 
-                    // Clear out the old markers.
-                    markers.forEach(function(marker) {
-                        marker.setMap(null);
-                    });
-                    markers = [];
-
                     // For each place, get the icon, name and location.
                     var bounds = new google.maps.LatLngBounds();
-                    places.forEach(function(place) {
+                    places.forEach(function (place) {
                         if (!place.geometry) {
                             console.log("Returned place contains no geometry");
                             return;
@@ -93,12 +88,12 @@ function Model() {
                         };
 
                         // Create a marker for each place.
-                        markers.push(new google.maps.Marker({
+                        destMarker = new google.maps.Marker({
                             map: map,
                             icon: icon,
                             title: place.name,
                             position: place.geometry.location
-                        }));
+                        });
 
                         if (place.geometry.viewport) {
                             // Only geocodes have viewport.
@@ -107,10 +102,10 @@ function Model() {
                             bounds.extend(place.geometry.location);
                         }
                     });
-
+                    drawRoute();
                 });
             });
-            }, 1000);
+        }, 1000);
 
     };
 
@@ -125,20 +120,26 @@ function Model() {
     }
 
     function showPosition(position) {
+        if (setup) {
+            currPosMarker.setMap(null);
+        }
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
         var myLatLng = {lat: latitude, lng: longitude};
-        var mapProp= {
-            center:new google.maps.LatLng(latitude,longitude),
-            zoom:16,
+        var mapProp = {
+            center: new google.maps.LatLng(latitude, longitude),
+            zoom: 16,
         };
-        var marker = new google.maps.Marker({
+        currPosMarker = new google.maps.Marker({
             position: myLatLng,
             map: map,
             title: 'You are here'
         });
-        map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        marker.setMap(map);
+        if (!setup) {
+            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            setup = true;
+        }
+        currPosMarker.setMap(map);
     }
    
 
@@ -210,6 +211,39 @@ function Model() {
     this.logout = function (){
         localStorage.setItem("loggedIn", "");
     };
+    function drawRoute() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
+        calculateAndDisplayRoute(
+            directionsDisplay, directionsService,map);
+        // Listen to change events from the start and end lists.
+        var onChangeHandler = function () {
+            calculateAndDisplayRoute(
+                directionsDisplay, directionsService, map);
+        };
+        document.getElementById('pac-input').addEventListener('change', onChangeHandler);
+
+    };
+
+    function calculateAndDisplayRoute(directionsDisplay, directionsService, map) {
+        // First, remove destination marker
+        destMarker.setMap(null);
+        directionsService.route({
+            origin: getLocation(),
+            destination: document.getElementById('pac-input').value,
+            travelMode: 'WALKING'
+        }, function (response, status) {
+            // Route the directions and pass the response to a function to create
+            // markers for each step.
+            if (status === 'OK') {
+                document.getElementById('pac-input').innerHTML =
+                    '<b>' + response.routes[0].warnings + '</b>';
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
 
 
 }
