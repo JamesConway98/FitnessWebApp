@@ -11,19 +11,20 @@ function Model() {
         currPosMarker,
         longitude;
     var setup = false;
+    var markers = [];
 
     this.initMap = function () {
         getLocation();
 
         //update location every 20 seconds
-        setInterval(function(){
+        setInterval(function () {
             getLocation();
         }, 20000);
 
 
-        setTimeout(function(){
-            $(document).ready(function() {
-                $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
+        setTimeout(function () {
+            $(document).ready(function () {
+                $.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=5c1d1e70f61769dbce60cd3876f79c98&units=metric', function (data) {
 
                     var temp = Math.round(data.main.temp);
                     localStorage.setItem('storeTemp', temp);
@@ -31,7 +32,7 @@ function Model() {
 
                     var wind = Math.round(data.wind.speed * 3.6 * 10) / 10;
                     localStorage.setItem('storeWind', wind);
-                    document.getElementById('wind').innerHTML = wind+ " km/h";
+                    document.getElementById('wind').innerHTML = wind + " km/h";
 
                     var desc = data.weather[0].main;
                     localStorage.setItem('storeDesc', desc);
@@ -43,12 +44,12 @@ function Model() {
 
 
                 })
-                    .fail(function() {
+                    .fail(function () {
                         var temp = Math.round(localStorage.getItem('storeTemp'));
-                        document.getElementById('temp').innerHTML =  temp + "&#8451";
+                        document.getElementById('temp').innerHTML = temp + "&#8451";
 
                         var wind = localStorage.getItem('storeWind');
-                        document.getElementById('wind').innerHTML =  wind + " km/h";
+                        document.getElementById('wind').innerHTML = wind + " km/h";
 
                         var desc = localStorage.getItem('storeDesc');
                         document.getElementById('desc').innerHTML = desc;
@@ -65,12 +66,18 @@ function Model() {
                 searchBox.setBounds(map.getBounds());
                 // Listen for the event fired when the user selects a prediction and retrieve
                 // more details for that place.
+
                 searchBox.addListener('places_changed', function () {
                     var places = searchBox.getPlaces();
 
                     if (places.length == 0) {
                         return;
                     }
+                    markers.forEach(function (marker) {
+                        marker.setMap(null);
+                    });
+                    markers = [];
+
 
                     // For each place, get the icon, name and location.
                     var bounds = new google.maps.LatLngBounds();
@@ -88,12 +95,12 @@ function Model() {
                         };
 
                         // Create a marker for each place.
-                        destMarker = new google.maps.Marker({
+                        markers.push(new google.maps.Marker({
                             map: map,
                             icon: icon,
                             title: place.name,
                             position: place.geometry.location
-                        });
+                        }));
 
                         if (place.geometry.viewport) {
                             // Only geocodes have viewport.
@@ -102,7 +109,7 @@ function Model() {
                             bounds.extend(place.geometry.location);
                         }
                     });
-                    drawRoute();
+
                 });
             });
         }, 1000);
@@ -111,6 +118,7 @@ function Model() {
 
     function getLocation() {
         if (navigator.geolocation) {
+
             navigator.geolocation.getCurrentPosition(showPosition);
 
             return {lat: latitude, lng: longitude};
@@ -141,7 +149,7 @@ function Model() {
         }
         currPosMarker.setMap(map);
     }
-   
+
 
     this.setStartLocation = function () {
         startLocation = getLocation();
@@ -158,7 +166,7 @@ function Model() {
 
     this.totalTime = function () {
         //Working out time it took
-        var diff =(endTime.getTime() - startTime.getTime()) / 1000;
+        var diff = (endTime.getTime() - startTime.getTime()) / 1000;
         diff /= 60;
         return Math.abs(Math.round(diff));
     };
@@ -171,79 +179,75 @@ function Model() {
     };
 
     this.calcSpeed = function () {
-      return this.calcDistance()/ (endTime-startTime);
+        return this.calcDistance() / (endTime - startTime);
     };
 
-    this.calcEndScore = function(){
+    this.calcEndScore = function () {
         //if average speed is > 25 mph and user says they walk/cycle/ran more than 50% then something isnt right
-        if(this.calcSpeed() > 670 && document.getElementById("myRange").value > 50){
+        if (this.calcSpeed() > 670 && document.getElementById("myRange").value > 50) {
             return -1;
         }
 
-        if(localStorage.getItem("lastDayWalked") == null){
-            localStorage.setItem("totalDaysWalked",  "1");
+        if (localStorage.getItem("lastDayWalked") == null) {
+            localStorage.setItem("totalDaysWalked", "1");
             localStorage.setItem("lastDayWalked", new Date().toDateString());
             localStorage.setItem("totalScore", "0");
         }
         //if last walked day isnt today then add one day on
-        else if(localStorage.getItem("lastDayWalked") != new Date().toDateString()){
+        else if (localStorage.getItem("lastDayWalked") != new Date().toDateString()) {
             var currentDays = localStorage.getItem("totalDaysWalked");
-            localStorage.setItem("totalDaysWalked",  parseInt(currentDays)+1);
+            localStorage.setItem("totalDaysWalked", parseInt(currentDays) + 1);
             localStorage.setItem("lastDayWalked", new Date().toDateString());
         }
         return this.calcDistance() * document.getElementById("myRange").value;
     };
     this.addScoreTotal = function () {
         var currentScore = localStorage.getItem("totalScore");
-        localStorage.setItem("totalScore",  parseInt(currentScore)+this.calcEndScore());
+        localStorage.setItem("totalScore", parseInt(currentScore) + this.calcEndScore());
 
     };
 
-    this.addScore = function(score){
+    this.addScore = function (score) {
         var currentScore = localStorage.getItem("totalScore");
-        localStorage.setItem("totalScore",  parseInt(currentScore)+score);
+        localStorage.setItem("totalScore", parseInt(currentScore) + score);
     };
 
-    this.setLogin = function (username){
+    this.setLogin = function (username) {
         localStorage.setItem("loggedIn", username);
     };
 
-    this.logout = function (){
+    this.logout = function () {
         localStorage.setItem("loggedIn", "");
     };
-    function drawRoute() {
+
+   this.drawRoute = function() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
-        calculateAndDisplayRoute(
-            directionsDisplay, directionsService,map);
-        // Listen to change events from the start and end lists.
-        var onChangeHandler = function () {
-            calculateAndDisplayRoute(
-                directionsDisplay, directionsService, map);
-        };
-        document.getElementById('pac-input').addEventListener('change', onChangeHandler);
 
-    };
+
+        calculateAndDisplayRoute(
+                directionsDisplay, directionsService, map);
+
+   };
 
     function calculateAndDisplayRoute(directionsDisplay, directionsService, map) {
-        // First, remove destination marker
-        destMarker.setMap(null);
-        directionsService.route({
-            origin: getLocation(),
-            destination: document.getElementById('pac-input').value,
-            travelMode: 'WALKING'
-        }, function (response, status) {
-            // Route the directions and pass the response to a function to create
-            // markers for each step.
-            if (status === 'OK') {
-                document.getElementById('pac-input').innerHTML =
-                    '<b>' + response.routes[0].warnings + '</b>';
-                directionsDisplay.setDirections(response);
-            } else {
-                window.alert('Directions request failed due to ' + status);
-            }
-        });
-    }
+        if (markers.length == 1) {
 
+            directionsService.route({
+                origin: getLocation(),
+                destination: document.getElementById('pac-input').value,
+                travelMode: 'WALKING'
+            }, function (response, status) {
+                // Route the directions and pass the response to a function to create
+                // markers for each step.
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+
+    }
 
 }
