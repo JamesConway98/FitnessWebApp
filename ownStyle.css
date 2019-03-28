@@ -268,3 +268,13 @@ section.popup {
 #myRange{
     height: 150%;
 }
+
+#share_button{
+    height: 100%;
+    width:100%;
+}
+
+#twitter_button{
+    height: 100%;
+    width:100%;
+}
