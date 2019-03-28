@@ -12,6 +12,7 @@ function Model() {
         longitude;
     var setup = false;
     var markers = [];
+    var directionsService,directionsDisplay;
 
     this.initMap = function () {
         getLocation();
@@ -219,35 +220,36 @@ function Model() {
     this.logout = function () {
         localStorage.setItem("loggedIn", "");
     };
+    this.initDestServices = function () {
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer({map: map});
+    };
 
-   this.drawRoute = function() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
-
-
-        calculateAndDisplayRoute(
-                directionsDisplay, directionsService, map);
-
-   };
-
-    function calculateAndDisplayRoute(directionsDisplay, directionsService, map) {
-        if (markers.length == 1) {
-
-            directionsService.route({
-                origin: getLocation(),
-                destination: document.getElementById('pac-input').value,
-                travelMode: 'WALKING'
-            }, function (response, status) {
-                // Route the directions and pass the response to a function to create
-                // markers for each step.
-                if (status === 'OK') {
-                    directionsDisplay.setDirections(response);
-                } else {
-                    window.alert('Directions request failed due to ' + status);
-                }
-            });
+    this.drawRoute = function(n) {
+        if (n === 0) {
+            directionsDisplay.setMap(null);
+            directionsDisplay = null;
         }
+        else {
 
-    }
+            if (markers.length == 1) {
+
+                directionsService.route({
+                    origin: getLocation(),
+                    destination: document.getElementById('pac-input').value,
+                    travelMode: 'WALKING'
+                }, function (response, status) {
+                    // Route the directions and pass the response to a function to create
+                    // markers for each step.
+                    if (status === 'OK') {
+                        directionsDisplay.setDirections(response);
+                    } else {
+                        window.alert('Directions request failed due to ' + status);
+                    }
+                });
+            }
+        };
+
+    };
 
 }
