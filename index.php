@@ -20,13 +20,6 @@
 
                         <button id="challenge" >CHALLENGE</button>
 
-                        <a class="twitter-share-button"
-                          href="https://twitter.com/share">
-                        Tweet
-                        </a>
-                        
-                        <button id="socialMedia">SOCIAL MEDIA</button>
-
 
                         <button id="tips" >TIPS</button>
 
@@ -36,6 +29,14 @@
                         <button id ="logout" hidden>LOGOUT</button>
 
                         <button id="ongoingChallenges">ACCEPTED CHALLENGES</button>
+
+                         <a href="https://twitter.com/intent/tweet?text=I have just beaten my high score!!!">
+                             <img src = "res/Twitter.png" id = "twitter_button">
+                         </a>
+
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=example.org">
+                            <img src = "res/Facebook_logo_(square).png" id = "share_button">
+                        </a>
 
         </div>
     </div>
@@ -172,10 +173,6 @@
 <script src ="Controller.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZohgfaGjEU4KAQHg_CyfxeTcmDjIdCpk&callback=myMap&libraries=geometry"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDF2AunIpNLNGJv6gE7DphRoLgyydnv1K0&libraries=places"></script>
-
-<script>
-window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-</script>
 
 </body>
 </html>
