@@ -149,8 +149,8 @@ function Model() {
     };
 
     this.setEndLocation = function () {
-        //endLocation = getLocation();
-        endLocation = {lat: 1, lng: 1};
+        endLocation = getLocation();
+        //endLocation = {lat: 1, lng: 1}; this is for test
         endTime = new Date();
         console.log(getLocation());
     };
