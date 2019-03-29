@@ -100,7 +100,7 @@
         </div>
     </div>
     <p id="distance"></p>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <input id="pac-input" class="controls" type="text" placeholder="Search">
 <div id="googleMap"></div>
     <input type="button" value="START"  id="startRoute" />
 

@@ -20,7 +20,7 @@ function Model() {
         //update location every 20 seconds
         setInterval(function () {
             getLocation();
-        }, 20000);
+        }, 5000);
 
 
         setTimeout(function () {
@@ -177,7 +177,7 @@ function Model() {
         var p1 = new google.maps.LatLng(startLocation.lat, startLocation.lng);
         var p2 = new google.maps.LatLng(endLocation.lat, endLocation.lng);
         console.log(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
-        return google.maps.geometry.spherical.computeDistanceBetween(p1, p2); //distance in KiloMeters
+        return Math.round(google.maps.geometry.spherical.computeDistanceBetween(p1, p2)); //distance in KiloMeters
     };
 
     this.calcSpeed = function () {
@@ -201,7 +201,7 @@ function Model() {
             localStorage.setItem("totalDaysWalked", parseInt(currentDays) + 1);
             localStorage.setItem("lastDayWalked", new Date().toDateString());
         }
-        return (this.calcDistance() * document.getElementById("myRange").value) /10;
+        return Math.round(this.calcDistance() * document.getElementById("myRange").value) /100;
     };
     this.addScoreTotal = function () {
         var currentScore = localStorage.getItem("totalScore");
